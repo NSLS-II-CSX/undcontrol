@@ -1,0 +1,7 @@
+record(waveform, "$(Sys)$(Dev)Val:Table$(N)-Wfrm"){
+  field(DESC, "Interpolation Waveform")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(N)")
+  info(autosaveFields, "VAL")
+}
+
