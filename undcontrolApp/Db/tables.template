@@ -26,7 +26,7 @@ record(ao, "$(Sys)$(ODev)"){
 record(aSub, "$(Sys)$(Dev)interp_"){
   field(SNAM, "interp1d")
   field(TPRO, "$(TPRO,0)")
-  #field(BRSV, "INVALID")
+  field(BRSV, "INVALID")
 
   field(FTA,  "DOUBLE")
   field(NOA,  1)
