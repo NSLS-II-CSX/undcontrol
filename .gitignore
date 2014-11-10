@@ -6,3 +6,4 @@ O.*
 *.swp
 config
 st.cmd
+envPaths

@@ -5,13 +5,14 @@
 
 < envPaths
 
+cd ${TOP}
+
 ## Register all support components
-dbLoadDatabase("../../dbd/undcontrol.dbd",0,0)
+dbLoadDatabase("dbd/undcontrol.dbd",0,0)
 undcontrol_registerRecordDeviceDriver(pdbbase) 
 
 ## Load record instances
-dbLoadRecords("${TOP}/db/interp.db","Sys=XF:23ID-ID,Dev={EPU:1-RLK},N=1000000,In=Val:Gap-I,Out=Enrgy-I,DOL=SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV")
-dbLoadRecords("${TOP}/db/interp.db","Sys=XF:23ID-ID,Dev={EPU:1-FLK},N=1000000,In=Enrgy-SP,Out=Val:Gap-SP")
+dbLoadTemplate("${TOP}/db/interp.substitutions")
 
 system("install -m 777 -d $(TOP)/as/save") 
 system("install -m 777 -d $(TOP)/as/req")
