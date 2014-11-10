@@ -4,3 +4,5 @@ db/*
 as/*
 O.*
 *.swp
+config
+st.cmd
