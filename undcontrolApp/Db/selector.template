@@ -1,0 +1,77 @@
+#
+# Select record chooser
+#
+
+record(mbbi, "$(Sys)$(Dev)Val:Table-Sel"){
+  field(ZRST, "Undefined")
+  field(ONST, "Value 1")
+  field(TWST, "Value 2")
+  field(THST, "Value 3")
+  field(FRST, "Value 4")
+  field(FVST, "Value 5")
+  field(SXST, "Value 6")
+  field(SVST, "Value 7")
+  field(EIST, "Value 8")
+  field(NIST, "Value 9")
+  field(TEST, "Value 10")
+  field(FLNK, "$(Sys)$(Dev)Fanout_")
+  field(TPRO, "$(TPRO)")
+  info(autosaveFields, "ONST TWST THST FRST FVST SXST SVST EIST NIST TEST VAL")
+}
+
+record(fanout, "$(Sys)$(Dev)Fanout_"){
+  field(SELM, "All")
+  field(LNK1, "$(LNK1)")
+  field(LNK2, "$(LNK2)")
+}
+
+record(stringout, "$(Sys)$(Dev)Val:Name1-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.ONST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name2-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.TWST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name3-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.THST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name4-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.FRST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name5-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.FVST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name6-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.SXST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name7-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.SVST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name8-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.EIST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name9-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.NIST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}
+record(stringout, "$(Sys)$(Dev)Val:Name10-SP"){
+  field(OUT, "$(Sys)$(Dev)Val:Table-Sel.TEST")
+  field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  info(autosaveFields, "VAL")
+}

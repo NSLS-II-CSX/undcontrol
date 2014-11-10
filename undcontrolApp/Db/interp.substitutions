@@ -1,0 +1,28 @@
+file db/selector.template
+{
+  pattern { Sys , Dev , LNK1, LNK2 , TPRO }
+  { "XF:23ID-ID" , "{EPU:1}" , "XF:23ID-ID{EPU:1-FLT}interp_" , "XF:23ID-ID{EPU:1-RLT}interp_" , "0" }
+  { "XF:23ID-ID" , "{EPU:2}" , "XF:23ID-ID{EPU:2-FLT}interp_" , "XF:23ID-ID{EPU:2-RLT}interp_" , "0" }
+}
+
+file db/tables.template
+{
+  pattern { Sys , Dev , N , SDev , IDev , InLnk , IDevSel , IEGU , ODev , OEGU , TPRO }
+  { "XF:23ID-ID" , "{EPU:1-FLT}", "1000000" , 
+    "{EPU:1}", 
+    "{EPU:1}Enrgy-SP" , "" , "{EPU:1}Enrgy-Sel", "eV",
+    "{EPU:1}Val:Gap-I", "um" , "0"}
+  { "XF:23ID-ID" , "{EPU:1-RLT}", "1000000" , 
+    "{EPU:1}", 
+    "{EPU:1}Val:Gap-SP" , "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV", "{EPU:1}Val:Gap-Sel", "um" , 
+    "{EPU:1}Enrgy-I" , "eV" , "0"}
+  { "XF:23ID-ID" , "{EPU:2-FLT}", "1000000" , 
+    "{EPU:2}", 
+    "{EPU:2}Enrgy-SP" , "" , "{EPU:2}Enrgy-Sel", "eV",
+    "{EPU:2}Val:Gap-I", "um" , "0"}
+  { "XF:23ID-ID" , "{EPU:2-RLT}", "1000000" , 
+    "{EPU:2}", 
+    "{EPU:2}Val:Gap-SP" , "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV", "{EPU:2}Val:Gap-Sel", "um" , 
+    "{EPU:2}Enrgy-I" , "eV" , "0"}
+}
+

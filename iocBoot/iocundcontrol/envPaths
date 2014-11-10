@@ -1,4 +1,0 @@
-epicsEnvSet("ARCH","linux-x86_64")
-epicsEnvSet("IOC","iocundcontrol")
-epicsEnvSet("TOP","/home/swilkins/Repos/undcontrol")
-epicsEnvSet("EPICS_BASE","/usr/lib/epics")
