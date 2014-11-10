@@ -77,6 +77,15 @@ record(aSub, "$(Sys)$(Dev)interp_"){
 record(mbbi, "$(Sys)$(Dev)Sts:Interp-Sts"){
   field(INP,  "$(Sys)$(Dev)interp_.VAL") 
   field(TPRO, "$(TPRO,0)")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(ZRST, "OK")
+  field(ONST, "OUT OF RANGE")
+  field(TWST, "INVALID TABLE")
+  field(ZRSV, "NO_ALARM")
+  field(ONSV, "MAJOR")
+  field(TWSV, "MAJOR")
 }
 
 #
