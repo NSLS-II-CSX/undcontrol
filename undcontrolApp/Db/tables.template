@@ -70,6 +70,13 @@ record(aSub, "$(Sys)$(Dev)interp_"){
   field(FTVA, "DOUBLE")
   field(NOVA, "1")
   field(OUTA, "$(Sys)$(ODev) PP MS")
+
+  field(FLNK, "$(Sys)$(Dev)Sts:Interp-Sts")
+}
+
+record(mbbi, "$(Sys)$(Dev)Sts:Interp-Sts"){
+  field(INP,  "$(Sys)$(Dev)interp_.VAL") 
+  field(TPRO, "$(TPRO,0)")
 }
 
 #

@@ -67,7 +67,7 @@ static long interp1d(aSubRecord *prec) {
   n = (long)frac;
   r = frac - n;
   if((n < 0) || (n > (x_n-1))){
-    return 1;
+    return 2;
   }
 
   vala[0] = (e[n+4] - e[n+3]) * r;
