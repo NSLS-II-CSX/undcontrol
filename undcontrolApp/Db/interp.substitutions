@@ -10,7 +10,7 @@ file db/tables.template
   pattern { Sys , Dev , N , SDev , IDev , InLnk , IDevSel , IEGU , ODev , OEGU , TPRO }
   { "XF:23ID-ID" , "{EPU:1-FLT}", "1000000" , 
     "{EPU:1}", 
-    "{EPU:1}Enrgy-SP" , "" , "{EPU:1}Enrgy-Sel", "eV",
+    "{EPU:1}Enrgy-SP" , "XF:23ID1-OP{Mono}Enrgy-I" , "{EPU:1}Enrgy-Sel", "eV",
     "{EPU:1}Val:Gap-I", "um" , "0"}
   { "XF:23ID-ID" , "{EPU:1-RLT}", "1000000" , 
     "{EPU:1}", 
@@ -18,7 +18,7 @@ file db/tables.template
     "{EPU:1}Enrgy-I" , "eV" , "0"}
   { "XF:23ID-ID" , "{EPU:2-FLT}", "1000000" , 
     "{EPU:2}", 
-    "{EPU:2}Enrgy-SP" , "" , "{EPU:2}Enrgy-Sel", "eV",
+    "{EPU:2}Enrgy-SP" , "XF:23ID1-OP{Mono}Enrgy-I" , "{EPU:2}Enrgy-Sel", "eV",
     "{EPU:2}Val:Gap-I", "um" , "0"}
   { "XF:23ID-ID" , "{EPU:2-RLT}", "1000000" , 
     "{EPU:2}", 
