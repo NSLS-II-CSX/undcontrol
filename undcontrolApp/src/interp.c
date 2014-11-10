@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 static long interp1d(aSubRecord *prec) {
+  char *u;
   double *a, *e, *vala;
   double x_start, x_step, x_n, frac, r;
   long n;
@@ -19,7 +20,43 @@ static long interp1d(aSubRecord *prec) {
    */
 
   a = (double *)prec->a;
-  e = (double *)prec->e;
+  u = (char *)prec->u;
+
+  switch(*u){
+    case 1:
+      e = (double *)prec->e;
+      break;
+    case 2:
+      e = (double *)prec->f;
+      break;
+    case 3:
+      e = (double *)prec->g;
+      break;
+    case 4:
+      e = (double *)prec->h;
+      break;
+    case 5:
+      e = (double *)prec->i;
+      break;
+    case 6:
+      e = (double *)prec->j;
+      break;
+    case 7:
+      e = (double *)prec->k;
+      break;
+    case 8:
+      e = (double *)prec->l;
+      break;
+    case 9:
+      e = (double *)prec->m;
+      break;
+    case 10:
+      e = (double *)prec->n;
+      break;
+    default:
+      return 1;
+      break;
+  }
   vala = (double *)prec->vala;
 
   x_start = e[0];
