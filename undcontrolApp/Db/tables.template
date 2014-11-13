@@ -20,7 +20,7 @@ record(ao, "$(Sys)$(IDev)"){
 
 record(ao, "$(Sys)$(ODev)"){
   field(PREC, "3")
-  field(OUT,  "$(OutLnk,) CA")
+  field(OUT,  "$(OutLnk,)")
   field(EGU,  "$(OEGU,)")
 }
 
