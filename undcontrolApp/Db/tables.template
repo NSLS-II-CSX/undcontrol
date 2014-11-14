@@ -2,17 +2,17 @@
 # Interpolation subrotine
 #
 
-record(bo, "$(Sys)$(IDevSel)"){
-  field(ZNAM, "Open Loop")
-  field(ONAM, "Closed Loop")
-  field(OUT,  "$(Sys)$(IDev).OMSL")
+record(bo, "$(Sys)$(Dev)Enbl:Inp-Sel"){
+  field(ZNAM, "Disabled")
+  field(ONAM, "Enabled")
+  field(OUT,  "$(Sys)$(Dev)Val:Inp-SP.OMSL")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
-record(ao, "$(Sys)$(IDev)"){
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
-  field(DOL,  "$(InLnk,) CP MS")
+record(ao, "$(Sys)$(Dev)Val:Inp-SP"){
+  field(FLNK, "$(Sys)$(Dev)ASub_")
+  field(DOL,  "$(InLnk,)")
   field(OMSL, "supervisory")
   field(PREC, "3")
   field(EGU,  "$(IEGU,)")
@@ -25,46 +25,46 @@ record(ao, "$(Sys)$(Dev)Val:DBand-SP"){
   info(autosaveFields, "VAL")
 }
 
-record(bo, "$(Sys)$(ODevSel)"){
-  field(ZNAM, "Open Loop")
-  field(ONAM, "Closed Loop")
+record(bo, "$(Sys)$(Dev)Enbl:Out-Sel"){
+  field(ZNAM, "Disable")
+  field(ONAM, "Enable")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
-record(ao, "$(Sys)$(ODev)"){
-  field(DOL,  "$(Sys)$(Dev)-Calcout_.A")
+record(ao, "$(Sys)$(Dev)Val:Out-I"){
+  field(DOL,  "$(Sys)$(Dev)Calc.A")
   field(OMSL, "closed_loop")
   field(PREC, "3")
   field(EGU,  "$(OEGU,)")
 }
 
-record(ai, "$(Sys)$(Dev)Val:Out-I"){
-  field(INP,  "$(ODevVal) CP MS")
+record(ai, "$(Sys)$(Dev)Val:Out-RB"){
+  field(INP,  "$(OutLnkRB) CP MS")
 }
 
-record(calcout, "$(Sys)$(Dev)-Calcout_"){
+record(calcout, "$(Sys)$(Dev)Calc"){
   field(PREC, "3")
   field(DOPT, "Use OCAL")
-  field(OOPT, "Transition To Non-zero")
+  field(OOPT, "When Non-zero")
   field(OCAL, "A")
   field(CALC, "(ABS(A-B) > C) && D")
-  field(INPB, "$(Sys)$(Dev)Val:Out-I NPP MS")
+  field(INPB, "$(Sys)$(Dev)Val:Out-RB NPP MS")
   field(INPC, "$(Sys)$(Dev)Val:DBand-SP PP MS")
-  field(INPD, "$(Sys)$(ODevSel) PP MS")
+  field(INPD, "$(Sys)$(Dev)Enbl:Out-Sel PP MS")
   field(OUT,  "$(OutLnk,)")
   field(EGU,  "$(OEGU,)")
-  field(FLNK, "$(Sys)$(ODev)")
+  field(FLNK, "$(Sys)$(Dev)Val:Out-I")
 }
 
-record(aSub, "$(Sys)$(Dev)-aSub_"){
+record(aSub, "$(Sys)$(Dev)ASub_"){
   field(SNAM, "interp1d")
   field(TPRO, "$(TPRO,0)")
   field(BRSV, "MAJOR")
 
   field(FTA,  "DOUBLE")
   field(NOA,  1)
-  field(INPA, "$(Sys)$(IDev) NPP")
+  field(INPA, "$(Sys)$(Dev)Val:Inp-SP NPP")
 
   field(FTE,  "DOUBLE")
   field(NOE,  "$(N)")
@@ -103,19 +103,19 @@ record(aSub, "$(Sys)$(Dev)-aSub_"){
 
   field(FTVA, "DOUBLE")
   field(NOVA, "1")
-  field(OUTA, "$(Sys)$(Dev)-Calcout_.A")
+  field(OUTA, "$(Sys)$(Dev)Calc.A")
 
-  field(FLNK, "$(Sys)$(Dev)-Fanout_")
+  field(FLNK, "$(Sys)$(Dev)FOut_")
 }
 
-record(fanout, "$(Sys)$(Dev)-Fanout_"){
+record(fanout, "$(Sys)$(Dev)FOut_"){
   field(SELM, "All")
-  field(LNK1, "$(Sys)$(Dev)-Calcout_")
+  field(LNK1, "$(Sys)$(Dev)Calc")
   field(LNK2, "$(Sys)$(Dev)Sts:Interp-Sts")
 }
 
 record(mbbi, "$(Sys)$(Dev)Sts:Interp-Sts"){
-  field(INP,  "$(Sys)$(Dev)-aSub_.VAL") 
+  field(INP,  "$(Sys)$(Dev)ASub_.VAL") 
   field(TPRO, "$(TPRO,0)")
   field(ZRVL, "0")
   field(ONVL, "1")
@@ -137,7 +137,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table1-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -146,7 +146,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table2-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -155,7 +155,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table3-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -164,7 +164,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table4-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -173,7 +173,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table5-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -182,7 +182,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table6-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -191,7 +191,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table7-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -200,7 +200,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table8-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -209,7 +209,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table9-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
@@ -218,7 +218,11 @@ record(waveform, "$(Sys)$(Dev)Val:Table10-Wfrm"){
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
-  field(FLNK, "$(Sys)$(Dev)-aSub_")
+  field(FLNK, "$(Sys)$(Dev)ASub_")
   info(autosaveFields, "VAL")
 }
 
+# TESTING PVs
+
+record(ao, "$(Sys)$(Dev)Val:OutTest-SP"){
+}

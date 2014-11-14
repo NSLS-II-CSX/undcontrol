@@ -13,6 +13,7 @@ include $(TOP)/configure/CONFIG
 DB += interp.substitutions
 DB += tables.template
 DB += selector.template
+DB += indicators.template
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
