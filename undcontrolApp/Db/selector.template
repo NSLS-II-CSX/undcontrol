@@ -16,6 +16,7 @@ record(mbbi, "$(Sys)$(Dev)Val:Table-Sel"){
   field(TEST, "Value 10")
   field(FLNK, "$(Sys)$(Dev)Fanout_")
   field(TPRO, "$(TPRO)")
+  field(PINI, "1")
   info(autosaveFields, "ONST TWST THST FRST FVST SXST SVST EIST NIST TEST VAL")
 }
 
