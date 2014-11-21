@@ -14,6 +14,8 @@ DB += interp.substitutions
 DB += tables.template
 DB += selector.template
 DB += indicators.template
+DB += bpms.db
+DB += ctrl.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

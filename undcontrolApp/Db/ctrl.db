@@ -1,0 +1,7 @@
+record(bi, "XF:23ID-CT{}Prmt:Remote-Sts"){
+  field(INP,  "XF:23ID-CT{}Prmt:Remote-Sel CP")
+  field(ZNAM, "Restricted")
+  field(ONAM, "Permitted")
+  field(OSV,  "NO_ALARM")
+  field(ZSV,  "MINOR")
+}

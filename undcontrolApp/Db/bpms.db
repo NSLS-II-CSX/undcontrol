@@ -1,0 +1,66 @@
+# BPM Records for C23
+
+# From Sergei (seletskiy@bnl.gov)
+#
+# I've just realized that the PV I was going to send you is conditional, 
+# i.e. it shows you cell 23 only if "local bump" panel is set to cell 23.
+# 
+# Thus, I would say that the best thing to do is to calculate X/Y angles 
+# yourself from X/Y readings of your ID BPMs. Please use, the following PVs:
+#
+# for BPM 23-8 X: 'SR:C23-BI{BPM:8}Pos:X-Calc'
+# for BPM 23-8 Y: 'SR:C23-BI{BPM:8}Pos:Y-Calc'
+# for BPM 23-9 X: 'SR:C23-BI{BPM:9}Pos:X-Calc'
+# for BPM 23-9 Y: 'SR:C23-BI{BPM:9}Pos:Y-Calc'
+# 
+# The "absolute" locations of these BPMs are S(23-8)=607.3718 m, S(23-9)=609.5758 m.
+# 
+# BPM 23-7 is unfortunately dead for the time being, it won't be working until after the shutdown when we have time to open the vacuum and replace faulty buttons.
+# 
+# Please let me know if you need any help with this.
+#
+
+record(calc, "XF:23ID-ID{BPM}Val:AngleX-I"){
+  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
+  field(SCAN, ".1 second")
+  field(CALC, "(B-A) / 2.204")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(LLSV, "MAJOR")
+  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(calc, "XF:23ID-ID{BPM}Val:AngleY-I"){
+  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
+  field(SCAN, ".1 second")
+  field(CALC, "(B-A) / 2.204")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(LLSV, "MAJOR")
+  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(calc, "XF:23ID-ID{BPM}Val:PosX-I"){
+  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
+  field(SCAN, ".1 second")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(LLSV, "MAJOR")
+  field(CALC, "(B+A) / 2")
+  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(calc, "XF:23ID-ID{BPM}Val:PosY-I"){
+  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
+  field(SCAN, ".1 second")
+  field(HHSV, "MAJOR")
+  field(HSV,  "MINOR")
+  field(LSV,  "MINOR")
+  field(LLSV, "MAJOR")
+  field(CALC, "(B+A) / 2")
+  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
