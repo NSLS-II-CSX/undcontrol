@@ -15,6 +15,7 @@ undcontrol_registerRecordDeviceDriver(pdbbase)
 dbLoadTemplate("${TOP}/db/interp.substitutions")
 dbLoadRecords("${TOP}/db/bpms.db")
 dbLoadRecords("${TOP}/db/ctrl.db")
+dbLoadRecords("${TOP}/db/id.db")
 
 system("install -m 777 -d $(TOP)/as/save") 
 system("install -m 777 -d $(TOP)/as/req")

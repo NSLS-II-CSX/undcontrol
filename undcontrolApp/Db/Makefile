@@ -16,6 +16,8 @@ DB += selector.template
 DB += indicators.template
 DB += bpms.db
 DB += ctrl.db
+DB += id.db
+
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

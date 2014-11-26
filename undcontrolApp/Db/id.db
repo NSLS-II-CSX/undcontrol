@@ -1,0 +1,24 @@
+record(calc, "XF:23ID-ID{EPU:1-Ax:Phase}Pos-I"){
+  field(INPA, "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr CP MS")
+  field(CALC, "A/1000")
+  field(EGU,  "mm")
+  field(PREC, "3")
+}
+record(calc, "XF:23ID-ID{EPU:2-Ax:Phase}Pos-I"){
+  field(INPA,    "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr CP MS")
+  field(CALC, "A/1000")
+  field(EGU,  "mm")
+  field(PREC, "3")
+}
+record(calc, "XF:23ID-ID{EPU:1-Ax:Gap}Pos-I"){
+  field(INPA,    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr CP MS")
+  field(CALC, "A/1000")
+  field(EGU,  "mm")
+  field(PREC, "3")
+}
+record(calc, "XF:23ID-ID{EPU:2-Ax:Gap}Pos-I"){
+  field(INPA,    "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr CP MS")
+  field(CALC, "A/1000")
+  field(EGU,  "mm")
+  field(PREC, "3")
+}

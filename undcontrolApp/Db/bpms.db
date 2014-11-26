@@ -20,47 +20,129 @@
 # Please let me know if you need any help with this.
 #
 
+record(ai,   "XF:23ID-ID{BPM}Val:Alpha-I"){
+  info(autosaveFields, "VAL")
+  field(VAL,  "0.25")
+  field(FLNK, "XF:23ID-ID{BPM}Val:Alpha-I_")
+  field(PINI, "1")
+}
+
+record(seq, "XF:23ID-ID{BPM}Val:Alpha-I_"){
+  field(DOL1, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
+  field(DOL2, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
+  field(DOL3, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
+  field(DOL4, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
+  field(LNK1, "XF:23ID-ID{BPM}Val:AngleXS-I.SMOO")
+  field(LNK2, "XF:23ID-ID{BPM}Val:AngleYS-I.SMOO")
+  field(LNK3, "XF:23ID-ID{BPM}Val:PosXS-I.SMOO")
+  field(LNK4, "XF:23ID-ID{BPM}Val:PosYS-I.SMOO")
+  field(SELM, "All")
+}
+
+record(ao, "XF:23ID-ID{BPM}Val:AngleX-SP"){
+  field(VAL, "0.023")
+  field(PREC, "4")
+  field(EGU, "mrad")
+  info(autosaveFields, "VAL")
+}
+
 record(calc, "XF:23ID-ID{BPM}Val:AngleX-I"){
   field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
   field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
-  field(SCAN, ".1 second")
-  field(CALC, "(B-A) / 2.204")
+  field(INPC, "XF:23ID-ID{BPM}Val:AngleX-SP PP MS")
+  field(CALC, "((B-A) / 2.204) - C")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+  field(PREC, "4")
+  field(EGU,  "mrad")
+  info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+
+record(ai, "XF:23ID-ID{BPM}Val:AngleXS-I"){
+  field(INP, "XF:23ID-ID{BPM}Val:AngleX-I PP MS")
+  field(SCAN, ".1 second")
+  field(PREC, "4")
+  field(EGU,  "mrad")
+  field(SMOO, "0.1")
+}
+
+record(ao, "XF:23ID-ID{BPM}Val:AngleY-SP"){
+  field(VAL, "-0.029")
+  field(PREC, "4")
+  field(EGU, "mrad")
+  info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:AngleY-I"){
   field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
   field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
-  field(SCAN, ".1 second")
-  field(CALC, "(B-A) / 2.204")
+  field(INPC, "XF:23ID-ID{BPM}Val:AngleY-SP PP MS")
+  field(CALC, "((B-A) / 2.204) - C")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+  field(PREC, "4")
+  field(EGU,  "mrad")
+  info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(ai, "XF:23ID-ID{BPM}Val:AngleYS-I"){
+  field(INP, "XF:23ID-ID{BPM}Val:AngleY-I PP")
+  field(SCAN, ".1 second")
+  field(PREC, "4")
+  field(EGU,  "mrad")
+  field(SMOO, "0.1")
+}
+record(ao, "XF:23ID-ID{BPM}Val:PosX-SP"){
+  field(VAL, "0.0")
+  field(PREC, "4")
+  field(EGU, "mm")
+  info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:PosX-I"){
   field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
   field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
-  field(SCAN, ".1 second")
+  field(INPC, "XF:23ID-ID{BPM}Val:PosX-SP PP MS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  field(CALC, "(B+A) / 2")
-  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+  field(CALC, "((B+A) / 2) - C")
+  field(PREC, "4")
+  field(EGU,  "mm")
+  info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(ai, "XF:23ID-ID{BPM}Val:PosXS-I"){
+  field(INP, "XF:23ID-ID{BPM}Val:PosX-I PP MS")
+  field(SCAN, ".1 second")
+  field(PREC, "4")
+  field(EGU,  "mm")
+  field(SMOO, "0.1")
+}
+record(ao, "XF:23ID-ID{BPM}Val:PosY-SP"){
+  field(VAL, "0.0")
+  field(PREC, "4")
+  field(EGU, "mm")
+  info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:PosY-I"){
   field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
   field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
-  field(SCAN, ".1 second")
+  field(INPC, "XF:23ID-ID{BPM}Val:PosY-SP PP MS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  field(CALC, "(B+A) / 2")
-  info(autoaveFields, "SCAN HIHI HIGH LOW LOLO")
+  field(CALC, "((B+A) / 2) - C")
+  field(PREC, "4")
+  field(EGU,  "mm")
+  info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
+}
+record(ai, "XF:23ID-ID{BPM}Val:PosYS-I"){
+  field(INP, "XF:23ID-ID{BPM}Val:PosY-I PP MS")
+  field(SCAN, ".1 second")
+  field(PREC, "4")
+  field(EGU,  "mm")
+  field(SMOO, "0.1")
 }
