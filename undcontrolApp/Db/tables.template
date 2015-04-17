@@ -16,7 +16,7 @@ record(ao, "$(Sys)$(Dev)Val:Inp-SP"){
   field(OMSL, "supervisory")
   field(PREC, "3")
   field(EGU,  "$(IEGU,)")
-  info(autosaveFields, "VAL")
+  info(autosaveFields, "VAL DOL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:DBand-SP"){
