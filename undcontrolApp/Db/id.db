@@ -1,24 +1,47 @@
-record(calc, "XF:23ID-ID{EPU:1-Ax:Phase}Pos-I"){
-  field(INPA, "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr CP MS")
+record(calc, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-I"){
+  field(INPA, "SR:C23-ID:G1A{$(EPU)-Ax:$(Ax)}-Mtr.RBV CP MS")
   field(CALC, "A/1000")
   field(EGU,  "mm")
-  field(PREC, "3")
+  field(PREC, "4")
 }
-record(calc, "XF:23ID-ID{EPU:2-Ax:Phase}Pos-I"){
-  field(INPA,    "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr CP MS")
+
+record(calc, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-RB"){
+  field(INPA, "SR:C23-ID:G1A{$(EPU)-Ax:$(Ax)}-Mtr CP MS")
   field(CALC, "A/1000")
   field(EGU,  "mm")
-  field(PREC, "3")
+  field(PREC, "4")
 }
-record(calc, "XF:23ID-ID{EPU:1-Ax:Gap}Pos-I"){
-  field(INPA,    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr CP MS")
-  field(CALC, "A/1000")
+
+record(ao, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-SP"){
   field(EGU,  "mm")
-  field(PREC, "3")
+  field(PREC, "4")
+  field(DRVH, "$(Max,300)")
+  field(DRVL, "$(Min,10)")
+  field(OUT,  "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-SP_.A PP")
+  field(FLNK, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-Sts_")
 }
-record(calc, "XF:23ID-ID{EPU:2-Ax:Gap}Pos-I"){
-  field(INPA,    "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr CP MS")
-  field(CALC, "A/1000")
-  field(EGU,  "mm")
-  field(PREC, "3")
+
+record(bo, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-Sts_"){
+  field(VAL,  "1")
+  field(OUT,  "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Busy_ PP")
 }
+
+record(calcout, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-Calc_"){
+  field(INPA, "SR:C23-ID:G1A{$(EPU)-Ax:$(Ax)}-Mtr.DMOV CA")
+  #field(INPA, "XF:23ID1-OP{Mono}Sts:Move-Sts")
+  field(SCAN, ".1 second")
+  field(CALC, "!(A==1)")
+  field(OOPT, "Transition To Zero")
+  field(DOPT, "Use CALC")
+  field(OUT,  "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Busy_ PP")
+}
+
+record(busy, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Busy_"){
+}
+
+record(calcout, "XF:23ID-ID{$(EPU)-Ax:$(Ax)}Pos-SP_"){
+  field(CALC, "A*1000")
+  field(OUT,  "SR:C23-ID:G1A{$(EPU)-Ax:$(Ax)}-Mtr-SP CA")
+}
+
+
