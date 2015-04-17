@@ -14,7 +14,7 @@ file db/tables.template
   { "XF:23ID-ID" , "{EPU:1-FLT}", "1000000" , "{EPU:1}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , "eV",
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CA", 
-    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP",
+    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CP",
     "um" , "0"}
   { "XF:23ID-ID" , "{EPU:1-RLT}", "1000000" , "{EPU:1}",
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP MS", "um" , 
