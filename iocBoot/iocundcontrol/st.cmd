@@ -7,6 +7,9 @@
 
 cd ${TOP}
 
+epicsEnvSet("EPICS_CA_AUTO_ADDR_LIST","NO")
+epicsEnvSet("EPICS_CA_ADDR_LIST","10.23.0.255")
+
 ## Register all support components
 dbLoadDatabase("dbd/undcontrol.dbd",0,0)
 undcontrol_registerRecordDeviceDriver(pdbbase) 
@@ -15,7 +18,12 @@ undcontrol_registerRecordDeviceDriver(pdbbase)
 dbLoadTemplate("${TOP}/db/interp.substitutions")
 dbLoadRecords("${TOP}/db/bpms.db")
 dbLoadRecords("${TOP}/db/ctrl.db")
-dbLoadRecords("${TOP}/db/id.db")
+dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:1,Ax=Gap,Max=239,Min=12")
+dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:1,Ax=Phase,Max=24.6,Min=-24.6")
+dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:2,Ax=Gap,Max=239,Min=12")
+dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:2,Ax=Phase,Max=24.6,Min=-24.6")
+
+dbLoadRecords("$(EPICS_BASE)/db/iocAdminSoft.db", "IOC=XF:23IDA-CT{IOC:UNDCONTROL}")
 
 system("install -m 777 -d $(TOP)/as/save") 
 system("install -m 777 -d $(TOP)/as/req")
@@ -31,7 +39,11 @@ set_requestfile_path("${TOP}/as","/req")
 set_pass0_restoreFile("info_positions.sav")
 set_pass1_restoreFile("info_settings.sav")
 
+asSetFilename("/epics/xf/23id/xf23id.acf")
+
 iocInit()
+
+caPutLogInit("xf23id-ca:7004", 0)
 
 cd ${TOP}/as/req
 makeAutosaveFiles()

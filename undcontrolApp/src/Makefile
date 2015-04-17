@@ -20,10 +20,15 @@ undcontrol_DBD += interp.dbd
 undcontrol_DBD += system.dbd
 undcontrol_DBD += devIocStats.dbd
 undcontrol_DBD += asSupport.dbd
+undcontrol_DBD += caPutLog.dbd
+undcontrol_DBD += busySupport.dbd
+
 
 # Add all the support libraries needed by this IOC
 undcontrol_LIBS += autosave
 undcontrol_LIBS += devIocStats
+undcontrol_LIBS += caPutLog
+undcontrol_LIBS += busy
 
 # undcontrol_registerRecordDeviceDriver.cpp derives from undcontrol.dbd
 undcontrol_SRCS += undcontrol_registerRecordDeviceDriver.cpp

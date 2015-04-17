@@ -47,9 +47,9 @@ record(ao, "XF:23ID-ID{BPM}Val:AngleX-SP"){
 }
 
 record(calc, "XF:23ID-ID{BPM}Val:AngleX-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
-  field(INPC, "XF:23ID-ID{BPM}Val:AngleX-SP PP MS")
+  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CP NMS")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CP NMS")
+  field(INPC, "XF:23ID-ID{BPM}Val:AngleX-SP PP NMS")
   field(CALC, "((B-A) / 2.204) - C")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
@@ -75,9 +75,9 @@ record(ao, "XF:23ID-ID{BPM}Val:AngleY-SP"){
   info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:AngleY-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
-  field(INPC, "XF:23ID-ID{BPM}Val:AngleY-SP PP MS")
+  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CP NMS")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CP NMS")
+  field(INPC, "XF:23ID-ID{BPM}Val:AngleY-SP PP NMS")
   field(CALC, "((B-A) / 2.204) - C")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
@@ -101,9 +101,9 @@ record(ao, "XF:23ID-ID{BPM}Val:PosX-SP"){
   info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:PosX-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CPP")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CPP")
-  field(INPC, "XF:23ID-ID{BPM}Val:PosX-SP PP MS")
+  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CP NMS")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CP NMS")
+  field(INPC, "XF:23ID-ID{BPM}Val:PosX-SP PP NMS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
@@ -127,9 +127,9 @@ record(ao, "XF:23ID-ID{BPM}Val:PosY-SP"){
   info(autosaveFields, "VAL")
 }
 record(calc, "XF:23ID-ID{BPM}Val:PosY-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CPP")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CPP")
-  field(INPC, "XF:23ID-ID{BPM}Val:PosY-SP PP MS")
+  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CP NMS")
+  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CP NMS")
+  field(INPC, "XF:23ID-ID{BPM}Val:PosY-SP PP NMS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
