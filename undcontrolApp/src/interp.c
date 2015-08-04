@@ -5,7 +5,7 @@
 
 static long interp1d(aSubRecord *prec) {
   char *u;
-  double *a, *e, *vala;
+  double *a, *b, *c, *d, *e, *vala;
   double x_start, x_step, x_n, frac, r;
   long n;
 
@@ -15,13 +15,21 @@ static long interp1d(aSubRecord *prec) {
    * wf[1] = x start
    * wf[2] = x step
    *
-   * a is the input value
+   * a is the 1st input value
+   * b is the 2nd input value
+   * c is the 1st offset correction
+   * d is the 2nd offset correction
    * e is the interp table
    */
 
   a = (double *)prec->a;
+  b = (double *)prec->b;
+  c = (double *)prec->c;
+  d = (double *)prec->d;
+
   u = (char *)prec->u;
 
+  /* Get the interp table based on the table setting */
   switch(*u){
     case 1:
       e = (double *)prec->e;
@@ -63,7 +71,7 @@ static long interp1d(aSubRecord *prec) {
   x_step = e[1];
   x_n = e[2];
 
-  frac = ((a[0] - x_start) / x_step);
+  frac = (((a[0] - c[0]) - x_start) / x_step);
   n = (long)frac;
   r = frac - n;
   if((n < 0) || (n > (x_n-1))){

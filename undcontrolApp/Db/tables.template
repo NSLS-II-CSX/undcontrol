@@ -19,9 +19,17 @@ record(ao, "$(Sys)$(Dev)Val:Inp-SP"){
   info(autosaveFields, "VAL DOL")
 }
 
+record(ao, "$(Sys)$(Dev)Val:InpOff-SP"){
+  field(FLNK, "$(Sys)$(Dev)ASub_")
+  field(PREC, "3")
+  field(EGU,  "$(IEGU,)")
+  info(autosaveFields, "VAL")
+}
+
 record(ao, "$(Sys)$(Dev)Val:DBand-SP"){
   field(PREC, "3")
   field(EGU,  "$(OEGU,)")
+  field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
@@ -32,15 +40,24 @@ record(bo, "$(Sys)$(Dev)Enbl:Out-Sel"){
   info(autosaveFields, "VAL")
 }
 
-record(ao, "$(Sys)$(Dev)Val:Out-I"){
-  field(DOL,  "$(Sys)$(Dev)Calc.A")
-  field(OMSL, "closed_loop")
+record(ai, "$(Sys)$(Dev)Val:Out-I"){
+  field(INP,  "$(Sys)$(Dev)Calc.A")
   field(PREC, "3")
   field(EGU,  "$(OEGU,)")
+  field(DISA, "10")
+  field(SDIS, "$(Sys)$(Dev)Sts:Interp-Sts NPP MS")
+}
+
+record(ai, "$(Sys)$(Dev)Val:OutDrv-I"){
+  field(INP,  "$(Sys)$(Dev)Calc.OVAL")
+  field(PREC, "3")
+  field(EGU,  "$(OEGU,)")
+  field(DISA, "10")
+  field(SDIS, "$(Sys)$(Dev)Sts:Interp-Sts NPP MS")
 }
 
 record(ai, "$(Sys)$(Dev)Val:Out-RB"){
-  field(INP,  "$(OutLnkRB) CP MS")
+  field(INP,  "$(OutLnkRB)")
 }
 
 record(calcout, "$(Sys)$(Dev)Calc"){
@@ -54,7 +71,12 @@ record(calcout, "$(Sys)$(Dev)Calc"){
   field(INPD, "$(Sys)$(Dev)Enbl:Out-Sel NPP MS")
   field(OUT,  "$(OutLnk,)")
   field(EGU,  "$(OEGU,)")
-  field(FLNK, "$(Sys)$(Dev)Val:Out-I")
+  field(FLNK, "$(Sys)$(Dev)Calc_")
+}
+
+record(fanout, "$(Sys)$(Dev)Calc_"){
+  field(LNK1, "$(Sys)$(Dev)Val:Out-I")
+  field(LNK2, "$(Sys)$(Dev)Val:OutDrv-I")
 }
 
 record(aSub, "$(Sys)$(Dev)ASub_"){
@@ -65,6 +87,16 @@ record(aSub, "$(Sys)$(Dev)ASub_"){
   field(FTA,  "DOUBLE")
   field(NOA,  1)
   field(INPA, "$(Sys)$(Dev)Val:Inp-SP NPP")
+
+  field(FTB,  "DOUBLE")
+  field(NOB,  1)
+
+  field(FTC,  "DOUBLE")
+  field(NOC,  1)
+  field(INPC, "$(Sys)$(Dev)Val:InpOff-SP NPP")
+
+  field(FTD,  "DOUBLE")
+  field(NOD,  1)
 
   field(FTE,  "DOUBLE")
   field(NOE,  "$(N)")
