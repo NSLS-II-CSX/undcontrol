@@ -108,7 +108,9 @@ static long interp1d(aSubRecord *prec) {
 
   long ind = x + (y * y_n);
   double r1 = table[ind] + ((table[ind+1] - table[ind]) * x_r);
-  double r2 = table[ind + y_n] + ((table[ind+1+y_n] - table[ind+y_n]) * x_r);
+  double r2 = table[ind + x_n] + ((table[ind+1+x_n] - table[ind+x_n]) * x_r);
+
+  // fprintf(stderr ,"r1 = %f, r2 = %f\n", r1, r2);
 
   double *out = (double *)prec->vala;
   *out = r1 + ((r2 - r1) * y_r);

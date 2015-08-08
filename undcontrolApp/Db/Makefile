@@ -14,6 +14,7 @@ DB += interp.substitutions
 DB += tables.template
 DB += selector.template
 DB += indicators.template
+DB += inputs.template
 DB += bpms.db
 DB += ctrl.db
 DB += id.db

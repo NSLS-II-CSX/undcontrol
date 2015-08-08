@@ -1,0 +1,4 @@
+record(ao, "$(Sys)$(Dev)Poln-SP"){
+  field(DESC, "Polarization")
+  field(PREC, "3")
+}
