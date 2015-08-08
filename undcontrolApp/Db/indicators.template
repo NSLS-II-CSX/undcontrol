@@ -1,4 +1,10 @@
-record(ao, "$(Sys)$(Dev)Enrgy-I"){
+record(ai, "$(Sys)$(Dev)Enrgy-I"){
+  field(DESC, "Energy")
+  field(EGU,  "eV")
+  field(PREC, "3")
+}
+
+record(ai, "$(Sys)$(Dev)Poln-I"){
   field(DESC, "Energy")
   field(EGU,  "eV")
   field(PREC, "3")

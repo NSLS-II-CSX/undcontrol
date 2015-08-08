@@ -22,8 +22,12 @@ record(mbbi, "$(Sys)$(Dev)Val:Table-Sel"){
 
 record(fanout, "$(Sys)$(Dev)Fanout_"){
   field(SELM, "All")
-  field(LNK1, "$(LNK1)")
-  field(LNK2, "$(LNK2)")
+  field(LNK1, "$(LNK1,)")
+  field(LNK2, "$(LNK2,)")
+  field(LNK3, "$(LNK3,)")
+  field(LNK4, "$(LNK4,)")
+  field(LNK5, "$(LNK5,)")
+  field(LNK6, "$(LNK6,)")
 }
 
 record(stringout, "$(Sys)$(Dev)Val:Name1-SP"){
