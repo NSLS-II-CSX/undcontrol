@@ -15,9 +15,10 @@ DB += tables.template
 DB += selector.template
 DB += indicators.template
 DB += inputs.template
+DB += idaxis.template
+DB += id.substitutions
 DB += bpms.db
 DB += ctrl.db
-DB += id.db
 
 
 #----------------------------------------------------

@@ -1,13 +1,15 @@
 file db/selector.template
 {
-  pattern { Sys , Dev , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO }
+  pattern { Sys , Dev , ModeLnk , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO }
   { "XF:23ID-ID" , "{EPU:1}" , 
+	"SR:C23-ID:G1A{EPU:1-Ax:Phase}Phs:Mode-SP",
     "XF:23ID-ID{EPU:1-FLT}ASub1_" , 
     "XF:23ID-ID{EPU:1-FLT}ASub2_" , 
 	"XF:23ID-ID{EPU:1-RLT}ASub1_" ,
 	"XF:23ID-ID{EPU:1-RLT}ASub2_" , 
 	"", "", "0" }
   { "XF:23ID-ID" , "{EPU:2}" , 
+	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
     "XF:23ID-ID{EPU:2-FLT}ASub1_" , 
     "XF:23ID-ID{EPU:2-FLT}ASub2_" , 
 	"XF:23ID-ID{EPU:2-RLT}ASub1_" , 
@@ -22,9 +24,8 @@ file db/tables.template
 			IEGU1 , IEGU2,
             OutLnk1 , OutLnk2, 
 			OutLnkRB1, OutLnkRB2, 
-			ModeLnk, 
 			OEGU1 , OEGU2 , TPRO }
-  { "XF:23ID-ID" , "{EPU:1-FLT}", "1000000" , "{EPU:1}",
+  { "XF:23ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
 	"XF:23ID-ID{EPU:1}Poln-SP CP MS", 
 	"eV", "", 
@@ -32,9 +33,8 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CA MS", 
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CP MS",
-	"SR:C23-ID:G1A{EPU:1-Ax:Phase}Phs:Mode-SP",
     "um" , "um", "0"}
-  { "XF:23ID-ID" , "{EPU:1-RLT}", "1000000" , "{EPU:1}",
+  { "XF:23ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr.RBV CP MS", 
 	"um" , "um", 
@@ -44,9 +44,9 @@ file db/tables.template
 	"XF:23ID-ID{EPU:1}Poln-I CP MS" ,
 	"",
     "eV" , "", "0"}
-  { "XF:23ID-ID" , "{EPU:2-FLT}", "1000000" , "{EPU:2}",
+  { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "{EPU:2}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
-	"XF:23ID-ID{EPU:2}Poln-SP CP MS", o
+	"XF:23ID-ID{EPU:2}Poln-SP CP MS", 
 	"eV", "", 
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CA MS", 
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CA MS", 
@@ -54,7 +54,7 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CP MS",
 	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
     "um" , "um", "0"}
-  { "XF:23ID-ID" , "{EPU:2-RLT}", "1000000" , "{EPU:2}",
+  { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "{EPU:2}",
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr.RBV CP MS", 
 	"um" , "um", 

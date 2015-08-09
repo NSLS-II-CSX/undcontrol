@@ -16,12 +16,9 @@ undcontrol_registerRecordDeviceDriver(pdbbase)
 
 ## Load record instances
 dbLoadTemplate("${TOP}/db/interp.substitutions")
+dbLoadTemplate("${TOP}/db/id.substitutions")
 dbLoadRecords("${TOP}/db/bpms.db")
 dbLoadRecords("${TOP}/db/ctrl.db")
-dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:1,Ax=Gap,Max=239,Min=12")
-dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:1,Ax=Phase,Max=24.6,Min=-24.6")
-dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:2,Ax=Gap,Max=239,Min=12")
-dbLoadRecords("${TOP}/db/id.db", "EPU=EPU:2,Ax=Phase,Max=24.6,Min=-24.6")
 
 dbLoadRecords("$(EPICS_BASE)/db/iocAdminSoft.db", "IOC=XF:23IDA-CT{IOC:UNDCONTROL}")
 

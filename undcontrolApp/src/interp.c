@@ -29,35 +29,38 @@ static long interp1d(aSubRecord *prec) {
   //fprintf(stderr, "table = %d\n", *((int *)prec->u));
 
   switch(*((int *)prec->u)){
-    case 1:
+    case 0:
       wfrm = (double *)prec->e;
       break;
-    case 2:
+    case 1:
       wfrm = (double *)prec->f;
       break;
-    case 3:
+    case 2:
       wfrm = (double *)prec->g;
       break;
-    case 4:
+    case 3:
       wfrm = (double *)prec->h;
       break;
-    case 5:
+    case 4:
       wfrm = (double *)prec->i;
       break;
-    case 6:
+    case 5:
       wfrm = (double *)prec->j;
       break;
-    case 7:
+    case 6:
       wfrm = (double *)prec->k;
       break;
-    case 8:
+    case 7:
       wfrm = (double *)prec->l;
       break;
-    case 9:
+    case 8:
       wfrm = (double *)prec->m;
       break;
-    case 10:
+    case 9:
       wfrm = (double *)prec->n;
+      break;
+    case 10:
+      wfrm = (double *)prec->o;
       break;
     default:
       return 1;
@@ -75,8 +78,7 @@ static long interp1d(aSubRecord *prec) {
   double y_start = wfrm[3];
   double y_step  = wfrm[4];
   long   y_n     = (long)wfrm[5];
-  double *table  = wfrm + 7;
-
+  double *table  = wfrm + 6;
 
   //fprintf(stderr, "x_in = %f\n", x_in);
   //fprintf(stderr, "y_in = %f\n", y_in);
@@ -115,7 +117,6 @@ static long interp1d(aSubRecord *prec) {
   //fprintf(stderr ,"r1 = %f, r2 = %f\n", r1, r2);
 
   *(double *)(prec->vala) = r1 + ((r2 - r1) * y_r);
-  *(double *)(prec->valb) = (double)wfrm[6];
   
   //fprintf(stderr, "Out == %f\n", *out);
   
