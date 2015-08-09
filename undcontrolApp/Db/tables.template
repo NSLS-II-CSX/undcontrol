@@ -23,7 +23,7 @@ record(ao, "$(Sys)$(Dev)Val:Inp1-SP"){
   field(DOL,  "$(InLnk1,)")
   field(OMSL, "supervisory")
   field(PREC, "3")
-  field(EGU,  "$(IEGU,)")
+  field(EGU,  "$(IEGU1,)")
   info(autosaveFields, "VAL DOL")
 }
 
@@ -32,34 +32,34 @@ record(ao, "$(Sys)$(Dev)Val:Inp2-SP"){
   field(DOL,  "$(InLnk2,)")
   field(OMSL, "supervisory")
   field(PREC, "3")
-  field(EGU,  "$(IEGU,)")
+  field(EGU,  "$(IEGU2,)")
   info(autosaveFields, "VAL DOL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:InpOff1-SP"){
   field(PREC, "3")
-  field(EGU,  "$(IEGU,)")
+  field(EGU,  "$(IEGU1,)")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:InpOff2-SP"){
   field(PREC, "3")
-  field(EGU,  "$(IEGU,)")
+  field(EGU,  "$(IEGU2,)")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:DBand1-SP"){
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU1,)")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:DBand2-SP"){
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU2,)")
   field(PINI, "1")
   info(autosaveFields, "VAL")
 }
@@ -88,7 +88,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Mode-Sel"){
 record(ai, "$(Sys)$(Dev)Val:Out1-I"){
   field(INP,  "$(Sys)$(Dev)Calc1.A")
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU1,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp1-Sts NPP MS")
 }
@@ -96,7 +96,7 @@ record(ai, "$(Sys)$(Dev)Val:Out1-I"){
 record(ai, "$(Sys)$(Dev)Val:OutDrv1-I"){
   field(INP,  "$(Sys)$(Dev)Calc1.OVAL")
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU1,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp1-Sts NPP MS")
 }
@@ -104,7 +104,7 @@ record(ai, "$(Sys)$(Dev)Val:OutDrv1-I"){
 record(ai, "$(Sys)$(Dev)Val:Out2-I"){
   field(INP,  "$(Sys)$(Dev)Calc2.A")
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU2,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp2-Sts NPP MS")
 }
@@ -112,7 +112,7 @@ record(ai, "$(Sys)$(Dev)Val:Out2-I"){
 record(ai, "$(Sys)$(Dev)Val:OutDrv2-I"){
   field(INP,  "$(Sys)$(Dev)Calc2.OVAL")
   field(PREC, "3")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU2,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp2-Sts NPP MS")
 }
@@ -125,10 +125,12 @@ record(ai, "$(Sys)$(Dev)Mode-I"){
 
 record(ai, "$(Sys)$(Dev)Val:Out1-RB"){
   field(INP,  "$(OutLnkRB1)")
+  field(EGU,  "$(OEGU1,)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:Out2-RB"){
   field(INP,  "$(OutLnkRB2)")
+  field(EGU,  "$(OEGU2,)")
 }
 
 record(calcout, "$(Sys)$(Dev)Calc1"){
@@ -141,7 +143,7 @@ record(calcout, "$(Sys)$(Dev)Calc1"){
   field(INPC, "$(Sys)$(Dev)Val:DBand1-SP NPP MS")
   field(INPD, "$(Sys)$(Dev)Enbl:Out1-Sel NPP MS")
   field(OUT,  "$(OutLnk1,)")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU1,)")
   field(FLNK, "$(Sys)$(Dev)Calc_")
 }
 
@@ -155,7 +157,7 @@ record(calcout, "$(Sys)$(Dev)Calc2"){
   field(INPC, "$(Sys)$(Dev)Val:DBand2-SP NPP MS")
   field(INPD, "$(Sys)$(Dev)Enbl:Out2-Sel NPP MS")
   field(OUT,  "$(OutLnk2,)")
-  field(EGU,  "$(OEGU,)")
+  field(EGU,  "$(OEGU2,)")
   field(FLNK, "$(Sys)$(Dev)Calc_")
 }
 
@@ -167,7 +169,6 @@ record(calcout, "$(Sys)$(Dev)Calc3"){
   field(CALC, "B")
   field(INPB, "$(Sys)$(Dev)Enbl:Mode-Sel NPP MS")
   field(OUT,  "$(ModeLnk,)")
-  field(EGU,  "$(OEGU,)")
   field(FLNK, "$(Sys)$(Dev)Calc_")
 }
 
