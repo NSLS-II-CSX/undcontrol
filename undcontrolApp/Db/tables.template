@@ -359,6 +359,16 @@ record(mbbi, "$(Sys)$(Dev)Sts:Interp2-Sts"){
 # Waveform interpolation tables
 #
 
+record(waveform, "$(Sys)$(Dev)Val:Table0a-Wfrm"){
+  field(DESC, "Interpolation Waveform")
+  field(TPRO, "$(TPRO,0)")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(N)")
+  field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
+  info(autosaveFields, "VAL")
+}
+
 record(waveform, "$(Sys)$(Dev)Val:Table1a-Wfrm"){
   field(DESC, "Interpolation Waveform")
   field(TPRO, "$(TPRO,0)")
@@ -450,6 +460,16 @@ record(waveform, "$(Sys)$(Dev)Val:Table9a-Wfrm"){
 }
 
 record(waveform, "$(Sys)$(Dev)Val:Table10a-Wfrm"){
+  field(DESC, "Interpolation Waveform")
+  field(TPRO, "$(TPRO,0)")
+  field(FTVL, "DOUBLE")
+  field(NELM, "$(N)")
+  field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
+  info(autosaveFields, "VAL")
+}
+
+record(waveform, "$(Sys)$(Dev)Val:Table0b-Wfrm"){
   field(DESC, "Interpolation Waveform")
   field(TPRO, "$(TPRO,0)")
   field(FTVL, "DOUBLE")

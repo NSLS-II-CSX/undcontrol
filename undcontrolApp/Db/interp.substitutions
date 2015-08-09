@@ -42,7 +42,6 @@ file db/tables.template
     "XF:23ID-ID{EPU:1}Poln-I CA MS" ,
 	"XF:23ID-ID{EPU:1}Enrgy-I CP MS" ,
 	"XF:23ID-ID{EPU:1}Poln-I CP MS" ,
-	"",
     "eV" , "", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "{EPU:2}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
@@ -52,7 +51,6 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CA MS", 
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CP MS",
-	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
     "um" , "um", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "{EPU:2}",
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV CP MS", 
@@ -62,7 +60,6 @@ file db/tables.template
     "XF:23ID-ID{EPU:2}Poln-I CA MS" ,
 	"XF:23ID-ID{EPU:2}Enrgy-I CP MS" ,
 	"XF:23ID-ID{EPU:2}Poln-I CP MS" ,
-	"",
     "eV" , "", "0" , "DEFAULT" }
 }
 

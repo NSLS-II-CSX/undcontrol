@@ -14,7 +14,7 @@ record(mbbo, "$(Sys)$(Dev)Val:Table-Sel"){
   field(EIST, "Value 8")
   field(NIST, "Value 9")
   field(TEST, "Value 10")
-  field(FLNK, "$(Sys)$(Dev)Fanout_")
+  field(FLNK, "$(Sys)$(Dev)Fanout1_")
   field(TPRO, "$(TPRO)")
   field(PINI, "1")
   field(ASG,  "$(ASG)")
@@ -22,14 +22,12 @@ record(mbbo, "$(Sys)$(Dev)Val:Table-Sel"){
 }
 
 record(fanout, "$(Sys)$(Dev)Fanout1_"){
-  field(SELM, "ALL")
   field(LNK1, "$(Sys)$(Dev)Fanout2_")
   field(LNK2, "$(Sys)$(Dev)Sel_")
   field(ASG,  "$(ASG)")
 }
 
 record(fanout, "$(Sys)$(Dev)Fanout2_"){
-  field(SELM, "All")
   field(LNK1, "$(LNK1,)")
   field(LNK2, "$(LNK2,)")
   field(LNK3, "$(LNK3,)")
@@ -55,13 +53,22 @@ record(bo, "$(Sys)$(Dev)Enbl:Mode-Sel"){
   info(autosaveFields, "VAL")
 }
 
-record(ao, "$(Sys)$(Dev)Val:Mode-I"){
+record(mbbo, "$(Sys)$(Dev)Val:Mode-I"){
   field(DOL,  "$(Sys)$(Dev)Sel_ NPP MS")
   field(SDIS, "$(Sys)$(Dev)Enbl:Mode-Sel NPP MS")
   field(DISV, "0")
   field(OUT,  "$(ModeLnk,)")
   field(ASG,  "$(ASG)")
-  info(autosaveFields, "OUT")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(ZRST, "Parallel TI-BO")
+  field(ONST, "Parallel TO-BI")
+  field(TWST, "Antiparallel TI-BO")
+  field(THST, "Antiparallel BO-BI")
+  info(autosaveFields, "OUT ZRST ONST TWST THST")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode0-SP"){
