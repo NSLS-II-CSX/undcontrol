@@ -1,20 +1,20 @@
 file db/selector.template
 {
-  pattern { Sys , Dev , ModeLnk , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO }
+  pattern { Sys , Dev , ModeLnk , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO , ASG }
   { "XF:23ID-ID" , "{EPU:1}" , 
 	"SR:C23-ID:G1A{EPU:1-Ax:Phase}Phs:Mode-SP",
     "XF:23ID-ID{EPU:1-FLT}ASub1_" , 
     "XF:23ID-ID{EPU:1-FLT}ASub2_" , 
 	"XF:23ID-ID{EPU:1-RLT}ASub1_" ,
 	"XF:23ID-ID{EPU:1-RLT}ASub2_" , 
-	"", "", "0" }
+	"", "", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:2}" , 
 	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
     "XF:23ID-ID{EPU:2-FLT}ASub1_" , 
     "XF:23ID-ID{EPU:2-FLT}ASub2_" , 
 	"XF:23ID-ID{EPU:2-RLT}ASub1_" , 
 	"XF:23ID-ID{EPU:2-RLT}ASub2_" , 
-	"", "", "0" }
+	"", "", "0" , "DEFAULT" }
 }
 
 file db/tables.template
@@ -24,7 +24,7 @@ file db/tables.template
 			IEGU1 , IEGU2,
             OutLnk1 , OutLnk2, 
 			OutLnkRB1, OutLnkRB2, 
-			OEGU1 , OEGU2 , TPRO }
+			OEGU1 , OEGU2 , TPRO , ASG }
   { "XF:23ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
 	"XF:23ID-ID{EPU:1}Poln-SP CP MS", 
@@ -33,7 +33,7 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CA MS", 
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CP MS",
-    "um" , "um", "0"}
+    "um" , "um", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr.RBV CP MS", 
@@ -43,7 +43,7 @@ file db/tables.template
 	"XF:23ID-ID{EPU:1}Enrgy-I CP MS" ,
 	"XF:23ID-ID{EPU:1}Poln-I CP MS" ,
 	"",
-    "eV" , "", "0"}
+    "eV" , "", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "{EPU:2}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
 	"XF:23ID-ID{EPU:2}Poln-SP CP MS", 
@@ -53,7 +53,7 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CP MS",
 	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
-    "um" , "um", "0"}
+    "um" , "um", "0" , "DEFAULT" }
   { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "{EPU:2}",
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr.RBV CP MS", 
@@ -63,7 +63,7 @@ file db/tables.template
 	"XF:23ID-ID{EPU:2}Enrgy-I CP MS" ,
 	"XF:23ID-ID{EPU:2}Poln-I CP MS" ,
 	"",
-    "eV" , "", "0"}
+    "eV" , "", "0" , "DEFAULT" }
 }
 
 file db/indicators.template

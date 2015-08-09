@@ -7,6 +7,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Inp1-Sel"){
   field(ONAM, "Enabled")
   field(OUT,  "$(Sys)$(Dev)Val:Inp1-SP.OMSL")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -15,6 +16,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Inp2-Sel"){
   field(ONAM, "Enabled")
   field(OUT,  "$(Sys)$(Dev)Val:Inp2-SP.OMSL")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -24,6 +26,7 @@ record(ao, "$(Sys)$(Dev)Val:Inp1-SP"){
   field(OMSL, "supervisory")
   field(PREC, "3")
   field(EGU,  "$(IEGU1,)")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL DOL")
 }
 
@@ -33,20 +36,25 @@ record(ao, "$(Sys)$(Dev)Val:Inp2-SP"){
   field(OMSL, "supervisory")
   field(PREC, "3")
   field(EGU,  "$(IEGU2,)")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL DOL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:InpOff1-SP"){
+  field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
   field(PREC, "3")
   field(EGU,  "$(IEGU1,)")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:InpOff2-SP"){
+  field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
   field(PREC, "3")
   field(EGU,  "$(IEGU2,)")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -54,6 +62,7 @@ record(ao, "$(Sys)$(Dev)Val:DBand1-SP"){
   field(PREC, "3")
   field(EGU,  "$(OEGU1,)")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -61,6 +70,7 @@ record(ao, "$(Sys)$(Dev)Val:DBand2-SP"){
   field(PREC, "3")
   field(EGU,  "$(OEGU2,)")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -68,6 +78,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Out1-Sel"){
   field(ZNAM, "Disable")
   field(ONAM, "Enable")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -75,6 +86,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Out2-Sel"){
   field(ZNAM, "Disable")
   field(ONAM, "Enable")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -84,6 +96,7 @@ record(ai, "$(Sys)$(Dev)Val:Out1-I"){
   field(EGU,  "$(OEGU1,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp1-Sts NPP MS")
+  field(ASG,  "$(ASG)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:OutDrv1-I"){
@@ -92,6 +105,7 @@ record(ai, "$(Sys)$(Dev)Val:OutDrv1-I"){
   field(EGU,  "$(OEGU1,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp1-Sts NPP MS")
+  field(ASG,  "$(ASG)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:Out2-I"){
@@ -100,6 +114,7 @@ record(ai, "$(Sys)$(Dev)Val:Out2-I"){
   field(EGU,  "$(OEGU2,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp2-Sts NPP MS")
+  field(ASG,  "$(ASG)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:OutDrv2-I"){
@@ -108,16 +123,19 @@ record(ai, "$(Sys)$(Dev)Val:OutDrv2-I"){
   field(EGU,  "$(OEGU2,)")
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp2-Sts NPP MS")
+  field(ASG,  "$(ASG)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:Out1-RB"){
   field(INP,  "$(OutLnkRB1)")
   field(EGU,  "$(OEGU1,)")
+  field(ASG,  "$(ASG)")
 }
 
 record(ai, "$(Sys)$(Dev)Val:Out2-RB"){
   field(INP,  "$(OutLnkRB2)")
   field(EGU,  "$(OEGU2,)")
+  field(ASG,  "$(ASG)")
 }
 
 record(calcout, "$(Sys)$(Dev)Calc1"){
@@ -132,6 +150,7 @@ record(calcout, "$(Sys)$(Dev)Calc1"){
   field(OUT,  "$(OutLnk1,)")
   field(EGU,  "$(OEGU1,)")
   field(FLNK, "$(Sys)$(Dev)Calc_")
+  field(ASG,  "$(ASG)")
 }
 
 record(calcout, "$(Sys)$(Dev)Calc2"){
@@ -146,6 +165,7 @@ record(calcout, "$(Sys)$(Dev)Calc2"){
   field(OUT,  "$(OutLnk2,)")
   field(EGU,  "$(OEGU2,)")
   field(FLNK, "$(Sys)$(Dev)Calc_")
+  field(ASG,  "$(ASG)")
 }
 
 record(fanout, "$(Sys)$(Dev)Calc_"){
@@ -153,11 +173,13 @@ record(fanout, "$(Sys)$(Dev)Calc_"){
   field(LNK2, "$(Sys)$(Dev)Val:OutDrv1-I")
   field(LNK3, "$(Sys)$(Dev)Val:Out2-I")
   field(LNK4, "$(Sys)$(Dev)Val:OutDrv2-I")
+  field(ASG,  "$(ASG)")
 }
 
 record(fanout, "$(Sys)$(Dev)ASub-Fout_"){
   field(LNK1, "$(Sys)$(Dev)ASub1_")
   field(LNK2, "$(Sys)$(Dev)ASub2_")
+  field(ASG,  "$(ASG)")
 }
 
 record(aSub, "$(Sys)$(Dev)ASub1_"){
@@ -224,6 +246,7 @@ record(aSub, "$(Sys)$(Dev)ASub1_"){
   field(OUTA, "$(Sys)$(Dev)Calc1.A")
 
   field(FLNK, "$(Sys)$(Dev)FOut_")
+  field(ASG,  "$(ASG)")
 }
 
 record(aSub, "$(Sys)$(Dev)ASub2_"){
@@ -290,6 +313,7 @@ record(aSub, "$(Sys)$(Dev)ASub2_"){
   field(OUTA, "$(Sys)$(Dev)Calc2.A")
 
   field(FLNK, "$(Sys)$(Dev)FOut_")
+  field(ASG,  "$(ASG)")
 }
 
 record(fanout, "$(Sys)$(Dev)FOut_"){
@@ -298,6 +322,7 @@ record(fanout, "$(Sys)$(Dev)FOut_"){
   field(LNK2, "$(Sys)$(Dev)Calc2")
   field(LNK3, "$(Sys)$(Dev)Sts:Interp1-Sts")
   field(LNK4, "$(Sys)$(Dev)Sts:Interp2-Sts")
+  field(ASG,  "$(ASG)")
 }
 
 record(mbbi, "$(Sys)$(Dev)Sts:Interp1-Sts"){
@@ -312,6 +337,7 @@ record(mbbi, "$(Sys)$(Dev)Sts:Interp1-Sts"){
   field(ZRSV, "NO_ALARM")
   field(ONSV, "MAJOR")
   field(TWSV, "MAJOR")
+  field(ASG,  "$(ASG)")
 }
 
 record(mbbi, "$(Sys)$(Dev)Sts:Interp2-Sts"){
@@ -326,6 +352,7 @@ record(mbbi, "$(Sys)$(Dev)Sts:Interp2-Sts"){
   field(ZRSV, "NO_ALARM")
   field(ONSV, "MAJOR")
   field(TWSV, "MAJOR")
+  field(ASG,  "$(ASG)")
 }
 
 #
@@ -338,6 +365,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table1a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -347,6 +375,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table2a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -356,6 +385,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table3a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -365,6 +395,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table4a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -374,6 +405,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table5a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -383,6 +415,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table6a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -392,6 +425,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table7a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -401,6 +435,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table8a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -410,6 +445,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table9a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -419,6 +455,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table10a-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -428,6 +465,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table1b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -437,6 +475,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table2b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -446,6 +485,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table3b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -455,6 +495,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table4b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -464,6 +505,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table5b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -473,6 +515,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table6b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -482,6 +525,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table7b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -491,6 +535,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table8b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -500,6 +545,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table9b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -509,6 +555,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table10b-Wfrm"){
   field(FTVL, "DOUBLE")
   field(NELM, "$(N)")
   field(FLNK, "$(Sys)$(Dev)ASub-Fout_")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 

@@ -17,6 +17,7 @@ record(mbbo, "$(Sys)$(Dev)Val:Table-Sel"){
   field(FLNK, "$(Sys)$(Dev)Fanout_")
   field(TPRO, "$(TPRO)")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "ZRST ONST TWST THST FRST FVST SXST SVST EIST NIST TEST VAL")
 }
 
@@ -24,6 +25,7 @@ record(fanout, "$(Sys)$(Dev)Fanout1_"){
   field(SELM, "ALL")
   field(LNK1, "$(Sys)$(Dev)Fanout2_")
   field(LNK2, "$(Sys)$(Dev)Sel_")
+  field(ASG,  "$(ASG)")
 }
 
 record(fanout, "$(Sys)$(Dev)Fanout2_"){
@@ -34,12 +36,14 @@ record(fanout, "$(Sys)$(Dev)Fanout2_"){
   field(LNK4, "$(LNK4,)")
   field(LNK5, "$(LNK5,)")
   field(LNK6, "$(LNK6,)")
+  field(ASG,  "$(ASG)")
 }
 
 record(sel, "$(Sys)$(Dev)Sel_"){
   field(SELM, "Specified")
   field(NVL,  "$(Sys)$(Dev)Val:Table-Sel NPP")
   field(FLNK, "$(Sys)$(Dev)Val:Mode-I")
+  field(ASG,  "$(ASG)")
 }
 
 record(bo, "$(Sys)$(Dev)Enbl:Mode-Sel"){
@@ -47,6 +51,7 @@ record(bo, "$(Sys)$(Dev)Enbl:Mode-Sel"){
   field(ZNAM, "Disable")
   field(ONAM, "Enable")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
@@ -55,127 +60,151 @@ record(ao, "$(Sys)$(Dev)Val:Mode-I"){
   field(SDIS, "$(Sys)$(Dev)Enbl:Mode-Sel NPP MS")
   field(DISV, "0")
   field(OUT,  "$(ModeLnk,)")
+  field(ASG,  "$(ASG)")
+  info(autosaveFields, "OUT")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode0-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.A")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode1-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.B")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode2-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.C")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode3-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.D")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode4-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.E")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode5-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.F")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode6-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.G")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode7-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.H")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode8-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.I")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode9-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.J")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(ao, "$(Sys)$(Dev)Val:Mode10-SP"){
   field(OUT, "$(Sys)$(Dev)Sel_.K")
   field(PINI, "1")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(stringout, "$(Sys)$(Dev)Val:Name0-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.ZRST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 
 record(stringout, "$(Sys)$(Dev)Val:Name1-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.ONST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name2-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.TWST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name3-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.THST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name4-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.FRST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name5-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.FVST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name6-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.SXST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name7-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.SVST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name8-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.EIST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name9-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.NIST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
 record(stringout, "$(Sys)$(Dev)Val:Name10-SP"){
   field(OUT, "$(Sys)$(Dev)Val:Table-Sel.TEST")
   field(FLNK, "$(Sys)$(Dev)Val:Table-Sel")
+  field(ASG,  "$(ASG)")
   info(autosaveFields, "VAL")
 }
