@@ -20,6 +20,7 @@ static long interp1d(aSubRecord *prec) {
    * e is the 1st interp table
    *
    * vala is the 1st output value
+   * valb is the output value specified on input
    */
 
   /* Get the interp table based on the table setting */
@@ -74,7 +75,8 @@ static long interp1d(aSubRecord *prec) {
   double y_start = wfrm[3];
   double y_step  = wfrm[4];
   long   y_n     = (long)wfrm[5];
-  double *table  = wfrm + 6;
+  double *table  = wfrm + 7;
+
 
   //fprintf(stderr, "x_in = %f\n", x_in);
   //fprintf(stderr, "y_in = %f\n", y_in);
@@ -106,17 +108,17 @@ static long interp1d(aSubRecord *prec) {
 
   //fprintf(stderr, "x = %ld, y = %ld, x_r = %f, y_r = %f\n", x, y, x_r, y_r);
 
-  long ind = x + (y * y_n);
+  long ind = x + (y * x_n);
   double r1 = table[ind] + ((table[ind+1] - table[ind]) * x_r);
   double r2 = table[ind + x_n] + ((table[ind+1+x_n] - table[ind+x_n]) * x_r);
 
-  // fprintf(stderr ,"r1 = %f, r2 = %f\n", r1, r2);
+  //fprintf(stderr ,"r1 = %f, r2 = %f\n", r1, r2);
 
-  double *out = (double *)prec->vala;
-  *out = r1 + ((r2 - r1) * y_r);
+  *(double *)(prec->vala) = r1 + ((r2 - r1) * y_r);
+  *(double *)(prec->valb) = (double)wfrm[6];
   
   //fprintf(stderr, "Out == %f\n", *out);
-  //
+  
   return 0; /* process output links */
 }
 

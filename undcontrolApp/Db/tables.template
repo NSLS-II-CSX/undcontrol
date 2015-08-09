@@ -78,6 +78,13 @@ record(bo, "$(Sys)$(Dev)Enbl:Out2-Sel"){
   info(autosaveFields, "VAL")
 }
 
+record(bo, "$(Sys)$(Dev)Enbl:Mode-Sel"){
+  field(ZNAM, "Disable")
+  field(ONAM, "Enable")
+  field(PINI, "1")
+  info(autosaveFields, "VAL")
+}
+
 record(ai, "$(Sys)$(Dev)Val:Out1-I"){
   field(INP,  "$(Sys)$(Dev)Calc1.A")
   field(PREC, "3")
@@ -109,6 +116,13 @@ record(ai, "$(Sys)$(Dev)Val:OutDrv2-I"){
   field(DISA, "10")
   field(SDIS, "$(Sys)$(Dev)Sts:Interp2-Sts NPP MS")
 }
+
+record(ai, "$(Sys)$(Dev)Mode-I"){
+  field(INP,  "$(Sys)$(Dev)Calc3.A")
+  field(DISA, "10")
+  field(SDIS, "$(Sys)$(Dev)Sts:Interp1-Sts NPP MS")
+}
+
 record(ai, "$(Sys)$(Dev)Val:Out1-RB"){
   field(INP,  "$(OutLnkRB1)")
 }
@@ -145,11 +159,24 @@ record(calcout, "$(Sys)$(Dev)Calc2"){
   field(FLNK, "$(Sys)$(Dev)Calc_")
 }
 
+record(calcout, "$(Sys)$(Dev)Calc3"){
+  field(PREC, "3")
+  field(DOPT, "Use OCAL")
+  field(OOPT, "When Non-zero")
+  field(OCAL, "A")
+  field(CALC, "B")
+  field(INPB, "$(Sys)$(Dev)Enbl:Mode-Sel NPP MS")
+  field(OUT,  "$(ModeLnk,)")
+  field(EGU,  "$(OEGU,)")
+  field(FLNK, "$(Sys)$(Dev)Calc_")
+}
+
 record(fanout, "$(Sys)$(Dev)Calc_"){
   field(LNK1, "$(Sys)$(Dev)Val:Out1-I")
   field(LNK2, "$(Sys)$(Dev)Val:OutDrv1-I")
   field(LNK3, "$(Sys)$(Dev)Val:Out2-I")
   field(LNK4, "$(Sys)$(Dev)Val:OutDrv2-I")
+  field(LNK5, "$(Sys)$(Dev)Mode-I")
 }
 
 record(fanout, "$(Sys)$(Dev)ASub-Fout_"){
@@ -217,6 +244,10 @@ record(aSub, "$(Sys)$(Dev)ASub1_"){
   field(NOVA, "1")
   field(OUTA, "$(Sys)$(Dev)Calc1.A")
 
+  field(FTVB, "DOUBLE")
+  field(NOVB, "1")
+  field(OUTB, "$(Sys)$(Dev)Calc3.A")
+
   field(FLNK, "$(Sys)$(Dev)FOut_")
 }
 
@@ -280,6 +311,9 @@ record(aSub, "$(Sys)$(Dev)ASub2_"){
   field(NOVA, "1")
   field(OUTA, "$(Sys)$(Dev)Calc2.A")
 
+  field(FTVB, "DOUBLE")
+  field(NOVB, "1")
+
   field(FLNK, "$(Sys)$(Dev)FOut_")
 }
 
@@ -289,6 +323,7 @@ record(fanout, "$(Sys)$(Dev)FOut_"){
   field(LNK2, "$(Sys)$(Dev)Calc2")
   field(LNK3, "$(Sys)$(Dev)Sts:Interp1-Sts")
   field(LNK4, "$(Sys)$(Dev)Sts:Interp2-Sts")
+  field(LNK5, "$(Sys)$(Dev)Calc3")
 }
 
 record(mbbi, "$(Sys)$(Dev)Sts:Interp1-Sts"){
