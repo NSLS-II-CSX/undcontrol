@@ -37,6 +37,7 @@ set_pass0_restoreFile("info_positions.sav")
 set_pass0_restoreFile("info_settings.sav")
 set_pass1_restoreFile("info_settings.sav")
 
+asSetSubstitutions("WS=csxwsall")
 asSetFilename("/epics/xf/23id/xf23id.acf")
 
 iocInit()

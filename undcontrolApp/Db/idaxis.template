@@ -3,6 +3,7 @@ record(calc, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-I"){
   field(CALC, "A/1000")
   field(EGU,  "mm")
   field(PREC, "4")
+  field(ASG,  "$(ASG)")
 }
 
 record(calc, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-RB"){
@@ -10,6 +11,7 @@ record(calc, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-RB"){
   field(CALC, "A/1000")
   field(EGU,  "mm")
   field(PREC, "4")
+  field(ASG,  "$(ASG)")
 }
 
 record(ao, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-SP"){
@@ -19,11 +21,13 @@ record(ao, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-SP"){
   field(DRVL, "$(Min,10)")
   field(OUT,  "$(Sys){$(EPU)-Ax:$(Ax)}Pos-SP_.A PP")
   field(FLNK, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-Sts_")
+  field(ASG,  "$(ASG)")
 }
 
 record(bo, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-Sts_"){
   field(VAL,  "1")
   field(OUT,  "$(Sys){$(EPU)-Ax:$(Ax)}Busy_ PP")
+  field(ASG,  "$(ASG)")
 }
 
 record(calcout, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-Calc_"){
@@ -33,6 +37,7 @@ record(calcout, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-Calc_"){
   field(OOPT, "Transition To Zero")
   field(DOPT, "Use CALC")
   field(OUT,  "$(Sys){$(EPU)-Ax:$(Ax)}Busy_ PP")
+  field(ASG,  "$(ASG)")
 }
 
 record(busy, "$(Sys){$(EPU)-Ax:$(Ax)}Busy_"){
@@ -41,5 +46,6 @@ record(busy, "$(Sys){$(EPU)-Ax:$(Ax)}Busy_"){
 record(calcout, "$(Sys){$(EPU)-Ax:$(Ax)}Pos-SP_"){
   field(CALC, "A*1000")
   field(OUT,  "SR:C23-ID:G1A{$(EPU)-Ax:$(Ax)}-Mtr-SP CA")
+  field(ASG,  "$(ASG)")
 }
 

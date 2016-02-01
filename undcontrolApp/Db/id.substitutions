@@ -1,9 +1,9 @@
 file db/idaxis.template
 {
-  pattern { Sys , EPU , Ax , Max , Min }
-  { "XF:23ID-ID" , "EPU:1" , "Gap"   , "239" , "12" }
-  { "XF:23ID-ID" , "EPU:2" , "Gap"   , "239" , "12" }
-  { "XF:23ID-ID" , "EPU:1" , "Phase" , "24.6" , "-24.6" }
-  { "XF:23ID-ID" , "EPU:2" , "Phase" , "24.6" , "-24.6" }
+  pattern { Sys , EPU , Ax , Max , Min , ASG }
+  { "XF:23ID-ID" , "EPU:1" , "Gap"   , "239" , "12", "EPU1PERMIT" }
+  { "XF:23ID-ID" , "EPU:2" , "Gap"   , "239" , "12", "EPU2PERMIT" }
+  { "XF:23ID-ID" , "EPU:1" , "Phase" , "24.6" , "-24.6" , "EPU1PERMIT" }
+  { "XF:23ID-ID" , "EPU:2" , "Phase" , "24.6" , "-24.6" , "EPU2PERMIT" }
 }
 

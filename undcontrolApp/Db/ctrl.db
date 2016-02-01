@@ -5,3 +5,33 @@ record(bi, "XF:23ID-CT{}Prmt:Remote-Sts"){
   field(OSV,  "NO_ALARM")
   field(ZSV,  "MINOR")
 }
+
+record(mbbo, "XF:23ID-CT{EPU:1}Prmt-Sel"){
+  field(ZRST, "CSX-1 Only")
+  field(ONST, "CSX-2 Only")
+  field(TWST, "All CSX")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(ASG,  "PERMIT")
+}
+
+record(mbbo, "XF:23ID-CT{EPU:2}Prmt-Sel"){
+  field(ZRST, "CSX-1 Only")
+  field(ONST, "CSX-2 Only")
+  field(TWST, "All CSX")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(ASG,  "PERMIT")
+  info(autosaveFields, "VAL")
+}
+
+record(bo, "XF:23ID-CT{}Prmt:Shared-Sel"){
+  field(ZNAM, "Restricted")
+  field(ONAM, "Permitted")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MINOR")
+  field(ASG,  "PERMIT")
+  info(autosaveFields, "VAL")
+}
