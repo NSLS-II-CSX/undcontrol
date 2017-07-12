@@ -1,22 +1,3 @@
-file db/selector.template
-{
-  pattern { Sys , Dev , ModeLnk , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO , ASG }
-  { "XF:23ID-ID" , "{EPU:1}" , 
-	"SR:C23-ID:G1A{EPU:1-Ax:Phase}Phs:Mode-SP",
-    "XF:23ID-ID{EPU:1-FLT}ASub1_" , 
-    "XF:23ID-ID{EPU:1-FLT}ASub2_" , 
-	"XF:23ID-ID{EPU:1-RLT}ASub1_" ,
-	"XF:23ID-ID{EPU:1-RLT}ASub2_" , 
-	"", "", "0" , "EPU1PERMIT" }
-  { "XF:23ID-ID" , "{EPU:2}" , 
-	"SR:C23-ID:G1A{EPU:2-Ax:Phase}Phs:Mode-SP",
-    "XF:23ID-ID{EPU:2-FLT}ASub1_" , 
-    "XF:23ID-ID{EPU:2-FLT}ASub2_" , 
-	"XF:23ID-ID{EPU:2-RLT}ASub1_" , 
-	"XF:23ID-ID{EPU:2-RLT}ASub2_" , 
-	"", "", "0" , "EPU2PERMIT" }
-}
-
 file db/tables.template
 {
   pattern { Sys , Dev , N , SDev, 
@@ -25,54 +6,34 @@ file db/tables.template
             OutLnk1 , OutLnk2, 
 			OutLnkRB1, OutLnkRB2, 
 			OEGU1 , OEGU2 , TPRO , ASG }
-  { "XF:23ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
-    "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
-	"XF:23ID-ID{EPU:1}Poln-SP CP MS", 
+  { "XF:02ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
+    "XF:02IDB-OP{Mono-Ax:9_Eng}Mtr.SET CP MS" , 
+	"XF:02ID-ID{EPU:1}Poln-SP CP MS", 
 	"eV", "", 
-    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CA MS", 
-    "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CA MS", 
-    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CP MS",
-    "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CP MS",
+    "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr CA MS", 
+    "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr CA MS", 
+    "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr CP MS",
+    "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr CP MS",
     "um" , "um", "0" , "EPU1PERMIT" }
-  { "XF:23ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
-    "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP MS", 
-    "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr.RBV CP MS", 
+  { "XF:02ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
+    "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr.RBV CP MS", 
+    "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr.RBV CP MS", 
 	"um" , "um", 
-    "XF:23ID-ID{EPU:1}Enrgy-I CA MS" ,
-    "XF:23ID-ID{EPU:1}Poln-I CA MS" ,
-	"XF:23ID-ID{EPU:1}Enrgy-I CP MS" ,
-	"XF:23ID-ID{EPU:1}Poln-I CP MS" ,
+    "XF:02ID-ID{EPU:1}Enrgy-I CA MS" ,
+    "XF:02ID-ID{EPU:1}Poln-I CA MS" ,
+	"XF:02ID-ID{EPU:1}Enrgy-I CP MS" ,
+	"XF:02ID-ID{EPU:1}Poln-I CP MS" ,
     "eV" , "", "0" , "EPU1PERMIT" }
-  { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "{EPU:2}",
-    "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
-	"XF:23ID-ID{EPU:2}Poln-SP CP MS", 
-	"eV", "", 
-    "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CA MS", 
-    "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CA MS", 
-    "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CP MS",
-    "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CP MS",
-    "um" , "um", "0" , "EPU2PERMIT" }
-  { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "{EPU:2}",
-    "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV CP MS", 
-    "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr.RBV CP MS", 
-	"um" , "um", 
-    "XF:23ID-ID{EPU:2}Enrgy-I CA MS" ,
-    "XF:23ID-ID{EPU:2}Poln-I CA MS" ,
-	"XF:23ID-ID{EPU:2}Enrgy-I CP MS" ,
-	"XF:23ID-ID{EPU:2}Poln-I CP MS" ,
-    "eV" , "", "0" , "EPU2PERMIT" }
 }
 
 file db/indicators.template
 {
   pattern { Sys, Dev }
-  { "XF:23ID-ID", "{EPU:1}" }
-  { "XF:23ID-ID", "{EPU:2}" }
+  { "XF:02ID-ID", "{EPU:1}" }
 }
 
 file db/inputs.template
 {
   pattern { Sys, Dev }
-  { "XF:23ID-ID", "{EPU:1}" }
-  { "XF:23ID-ID", "{EPU:2}" }
+  { "XF:02ID-ID", "{EPU:1}" }
 }
