@@ -1,3 +1,15 @@
+file db/selector.template
+{
+  pattern { Sys , Dev , ModeLnk , LNK1, LNK2 , LNK3, LNK4, LNK5, LNK6, TPRO , ASG }
+  { "XF:02ID-ID" , "{EPU:1}" , 
+	"SR:C02-ID:G1A{EPU:1-Ax:Phase}Phs:Mode-Sel",
+    "XF:02ID-ID{EPU:1-FLT}ASub1_" , 
+    "XF:02ID-ID{EPU:1-FLT}ASub2_" , 
+	"XF:02ID-ID{EPU:1-RLT}ASub1_" ,
+	"XF:02ID-ID{EPU:1-RLT}ASub2_" , 
+	"", "", "0" , "DEFAULT" }
+}
+
 file db/tables.template
 {
   pattern { Sys , Dev , N , SDev, 
@@ -12,18 +24,18 @@ file db/tables.template
 	"eV", "", 
     "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr CA MS", 
     "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr CA MS", 
-    "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr CP MS",
-    "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr CP MS",
-    "um" , "um", "0" , "EPU1PERMIT" }
+    "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr.RBV CP MS",
+    "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr.RBV CP MS",
+    "mm" , "mm", "0" , "DEFAULT" }
   { "XF:02ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
     "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr.RBV CP MS", 
     "SR:C02-ID:G1A{EPU:1-Ax:Phase}Mtr.RBV CP MS", 
-	"um" , "um", 
+	"mm" , "mm", 
     "XF:02ID-ID{EPU:1}Enrgy-I CA MS" ,
     "XF:02ID-ID{EPU:1}Poln-I CA MS" ,
 	"XF:02ID-ID{EPU:1}Enrgy-I CP MS" ,
 	"XF:02ID-ID{EPU:1}Poln-I CP MS" ,
-    "eV" , "", "0" , "EPU1PERMIT" }
+    "eV" , "", "0" , "DEFAULT" }
 }
 
 file db/indicators.template
