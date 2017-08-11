@@ -19,7 +19,7 @@ file db/tables.template
 			OutLnkRB1, OutLnkRB2, 
 			OEGU1 , OEGU2 , TPRO , ASG }
   { "XF:02ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
-    "XF:02IDB-OP{Mono-Ax:9_Eng}Mtr.SET CP MS" , 
+    "XF:02IDB-OP{Mono:1-Ax:9_Eng}Mtr.RBV CP MS" , 
 	"XF:02ID-ID{EPU:1}Poln-SP CP MS", 
 	"eV", "", 
     "SR:C02-ID:G1A{EPU:1-Ax:Gap}Mtr CA MS", 

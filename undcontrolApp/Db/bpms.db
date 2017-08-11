@@ -1,56 +1,39 @@
-# BPM Records for C23
+### BPM Records for C02 based on C23
+# This uses inputs from sofb readback, which is precalculated position (accel. call bumps).  No need to smooth the signal.
 
-# From Sergei (seletskiy@bnl.gov)
-#
-# I've just realized that the PV I was going to send you is conditional, 
-# i.e. it shows you cell 23 only if "local bump" panel is set to cell 23.
-# 
-# Thus, I would say that the best thing to do is to calculate X/Y angles 
-# yourself from X/Y readings of your ID BPMs. Please use, the following PVs:
-#
-# for BPM 23-8 X: 'SR:C23-BI{BPM:8}Pos:X-Calc'
-# for BPM 23-8 Y: 'SR:C23-BI{BPM:8}Pos:Y-Calc'
-# for BPM 23-9 X: 'SR:C23-BI{BPM:9}Pos:X-Calc'
-# for BPM 23-9 Y: 'SR:C23-BI{BPM:9}Pos:Y-Calc'
-# 
-# The "absolute" locations of these BPMs are S(23-8)=607.3718 m, S(23-9)=609.5758 m.
-# 
-# BPM 23-7 is unfortunately dead for the time being, it won't be working until after the shutdown when we have time to open the vacuum and replace faulty buttons.
-# 
-# Please let me know if you need any help with this.
-#
+# See CSX for actual calcuations used at C23 (predates sofb calcuation)
 
-record(ai,   "XF:23ID-ID{BPM}Val:Alpha-I"){
-  info(autosaveFields, "VAL")
-  field(VAL,  "0.25")
-  field(FLNK, "XF:23ID-ID{BPM}Val:Alpha-I_")
-  field(PINI, "1")
-}
 
-record(seq, "XF:23ID-ID{BPM}Val:Alpha-I_"){
-  field(DOL1, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
-  field(DOL2, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
-  field(DOL3, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
-  field(DOL4, "XF:23ID-ID{BPM}Val:Alpha-I NPP")
-  field(LNK1, "XF:23ID-ID{BPM}Val:AngleXS-I.SMOO")
-  field(LNK2, "XF:23ID-ID{BPM}Val:AngleYS-I.SMOO")
-  field(LNK3, "XF:23ID-ID{BPM}Val:PosXS-I.SMOO")
-  field(LNK4, "XF:23ID-ID{BPM}Val:PosYS-I.SMOO")
-  field(SELM, "All")
-}
+#record(ai,   "XF:02ID-ID{BPM}Val:Alpha-I"){
+#  info(autosaveFields, "VAL")
+#  field(VAL,  "0.25")
+#  field(FLNK, "XF:02ID-ID{BPM}Val:Alpha-I_")
+#  field(PINI, "1")
+#}
 
-record(ao, "XF:23ID-ID{BPM}Val:AngleX-SP"){
-  field(VAL, "0.023")
+#record(seq, "XF:02ID-ID{BPM}Val:Alpha-I_"){
+#  field(DOL1, "XF:02ID-ID{BPM}Val:Alpha-I NPP")
+#  field(DOL2, "XF:02ID-ID{BPM}Val:Alpha-I NPP")
+#  field(DOL3, "XF:02ID-ID{BPM}Val:Alpha-I NPP")
+#  field(DOL4, "XF:02ID-ID{BPM}Val:Alpha-I NPP")
+#  field(LNK1, "XF:02ID-ID{BPM}Val:AngleXS-I.SMOO")
+#  field(LNK2, "XF:02ID-ID{BPM}Val:AngleYS-I.SMOO")
+#  field(LNK3, "XF:02ID-ID{BPM}Val:PosXS-I.SMOO")
+#  field(LNK4, "XF:02ID-ID{BPM}Val:PosYS-I.SMOO")
+#  field(SELM, "All")
+#}
+
+record(ao, "XF:02ID-ID{BPM}Val:AngleX-SP"){
+  field(VAL, "0.005")
   field(PREC, "4")
   field(EGU, "mrad")
   info(autosaveFields, "VAL")
 }
 
-record(calc, "XF:23ID-ID{BPM}Val:AngleX-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CP NMS")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CP NMS")
-  field(INPC, "XF:23ID-ID{BPM}Val:AngleX-SP PP NMS")
-  field(CALC, "((B-A) / 2.204) - C")
+record(calc, "XF:02ID-ID{BPM}Val:AngleX-I"){
+  field(INPA, "SR:APHLA:SOFB{BUMP:C02-SIX}angle:X-I CP NMS")
+  field(INPB, "XF:02ID-ID{BPM}Val:AngleX-SP PP NMS")
+  field(CALC, "(A - B)")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
@@ -60,25 +43,24 @@ record(calc, "XF:23ID-ID{BPM}Val:AngleX-I"){
   info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
 }
 
-record(ai, "XF:23ID-ID{BPM}Val:AngleXS-I"){
-  field(INP, "XF:23ID-ID{BPM}Val:AngleX-I PP MS")
-  field(SCAN, ".1 second")
-  field(PREC, "4")
-  field(EGU,  "mrad")
-  field(SMOO, "0.1")
-}
+#record(ai, "XF:02ID-ID{BPM}Val:AngleXS-I"){
+#  field(INP, "XF:02ID-ID{BPM}Val:AngleX-I PP MS")
+#  field(SCAN, ".1 second")
+#  field(PREC, "4")
+#  field(EGU,  "mrad")
+#  field(SMOO, "0.1")
+#}
 
-record(ao, "XF:23ID-ID{BPM}Val:AngleY-SP"){
-  field(VAL, "-0.029")
+record(ao, "XF:02ID-ID{BPM}Val:AngleY-SP"){
+  field(VAL, "-0.015")
   field(PREC, "4")
   field(EGU, "mrad")
   info(autosaveFields, "VAL")
 }
-record(calc, "XF:23ID-ID{BPM}Val:AngleY-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CP NMS")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CP NMS")
-  field(INPC, "XF:23ID-ID{BPM}Val:AngleY-SP PP NMS")
-  field(CALC, "((B-A) / 2.204) - C")
+record(calc, "XF:02ID-ID{BPM}Val:AngleY-I"){
+  field(INPA, "SR:APHLA:SOFB{BUMP:C02-SIX}angle:Y-I CP NMS")
+  field(INPB, "XF:02ID-ID{BPM}Val:AngleY-SP PP NMS")
+  field(CALC, "(A - B)")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
@@ -87,62 +69,60 @@ record(calc, "XF:23ID-ID{BPM}Val:AngleY-I"){
   field(EGU,  "mrad")
   info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
 }
-record(ai, "XF:23ID-ID{BPM}Val:AngleYS-I"){
-  field(INP, "XF:23ID-ID{BPM}Val:AngleY-I PP")
-  field(SCAN, ".1 second")
-  field(PREC, "4")
-  field(EGU,  "mrad")
-  field(SMOO, "0.1")
-}
-record(ao, "XF:23ID-ID{BPM}Val:PosX-SP"){
+#record(ai, "XF:02ID-ID{BPM}Val:AngleYS-I"){
+#  field(INP, "XF:02ID-ID{BPM}Val:AngleY-I PP")
+#  field(SCAN, ".1 second")
+#  field(PREC, "4")
+#  field(EGU,  "mrad")
+#  field(SMOO, "0.1")
+#}
+record(ao, "XF:02ID-ID{BPM}Val:PosX-SP"){
   field(VAL, "0.0")
   field(PREC, "4")
   field(EGU, "mm")
   info(autosaveFields, "VAL")
 }
-record(calc, "XF:23ID-ID{BPM}Val:PosX-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:X-Calc CP NMS")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:X-Calc CP NMS")
-  field(INPC, "XF:23ID-ID{BPM}Val:PosX-SP PP NMS")
+record(calc, "XF:02ID-ID{BPM}Val:PosX-I"){
+  field(INPA, "SR:APHLA:SOFB{BUMP:C02-SIX}offset:X-I CP NMS")
+  field(INPB, "XF:02ID-ID{BPM}Val:PosX-SP PP NMS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  field(CALC, "((B+A) / 2) - C")
+  field(CALC, "(A - B)")
   field(PREC, "4")
   field(EGU,  "mm")
   info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
 }
-record(ai, "XF:23ID-ID{BPM}Val:PosXS-I"){
-  field(INP, "XF:23ID-ID{BPM}Val:PosX-I PP MS")
-  field(SCAN, ".1 second")
-  field(PREC, "4")
-  field(EGU,  "mm")
-  field(SMOO, "0.1")
-}
-record(ao, "XF:23ID-ID{BPM}Val:PosY-SP"){
+#record(ai, "XF:02ID-ID{BPM}Val:PosXS-I"){
+#  field(INP, "XF:02ID-ID{BPM}Val:PosX-I PP MS")
+#  field(SCAN, ".1 second")
+#  field(PREC, "4")
+#  field(EGU,  "mm")
+#  field(SMOO, "0.1")
+#}
+record(ao, "XF:02ID-ID{BPM}Val:PosY-SP"){
   field(VAL, "0.0")
   field(PREC, "4")
   field(EGU, "mm")
   info(autosaveFields, "VAL")
 }
-record(calc, "XF:23ID-ID{BPM}Val:PosY-I"){
-  field(INPA, "SR:C23-BI{BPM:8}Pos:Y-Calc CP NMS")
-  field(INPB, "SR:C23-BI{BPM:9}Pos:Y-Calc CP NMS")
-  field(INPC, "XF:23ID-ID{BPM}Val:PosY-SP PP NMS")
+record(calc, "XF:02ID-ID{BPM}Val:PosY-I"){
+  field(INPA, "SR:APHLA:SOFB{BUMP:C02-SIX}offset:Y-I CP NMS")
+  field(INPB, "XF:02ID-ID{BPM}Val:PosY-SP PP NMS")
   field(HHSV, "MAJOR")
   field(HSV,  "MINOR")
   field(LSV,  "MINOR")
   field(LLSV, "MAJOR")
-  field(CALC, "((B+A) / 2) - C")
+  field(CALC, "(A - B)")
   field(PREC, "4")
   field(EGU,  "mm")
   info(autosaveFields, "SCAN HIHI HIGH LOW LOLO")
 }
-record(ai, "XF:23ID-ID{BPM}Val:PosYS-I"){
-  field(INP, "XF:23ID-ID{BPM}Val:PosY-I PP MS")
-  field(SCAN, ".1 second")
-  field(PREC, "4")
-  field(EGU,  "mm")
-  field(SMOO, "0.1")
-}
+#record(ai, "XF:02ID-ID{BPM}Val:PosYS-I"){
+#  field(INP, "XF:02ID-ID{BPM}Val:PosY-I PP MS")
+#  field(SCAN, ".1 second")
+#  field(PREC, "4")
+#  field(EGU,  "mm")
+#  field(SMOO, "0.1")
+#}

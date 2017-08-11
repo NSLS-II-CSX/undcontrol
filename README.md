@@ -1,1 +1,1 @@
-Undulator control / interpolation IOC for CSX beamline
+Undulator control / interpolation IOC for SIX beamline
