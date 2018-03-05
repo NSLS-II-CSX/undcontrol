@@ -1,0 +1,15 @@
+record(ao, "XF:02ID-ID{Ping}Cmd:SBy-Cmd")
+{
+	field(OUT, "SR:C02-ID:G1A{EPU:1}Cmd:SBy-Cmd CP")
+	field(SCAN, "1 second")
+	field(SDIS, "XF:02ID-ID{Ping}Enbl-SP")
+	field(DISV, "0")
+	info(autosaveFields, "VAL")
+}
+
+record(bo, "XF:02ID-ID{Ping}Enbl-SP")
+{
+	field(ONAM, "Enabled")
+	field(ZNAM, "Disabled")
+	info(autosaveFields, "VAL")
+}
