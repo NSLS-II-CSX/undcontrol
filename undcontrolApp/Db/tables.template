@@ -579,3 +579,78 @@ record(waveform, "$(Sys)$(Dev)Val:Table10b-Wfrm"){
   info(autosaveFields, "VAL")
 }
 
+
+record(aSub,"$(Sys)$(Dev)MyASub") {
+  field(SNAM,"get_id_scan_gaps")
+  field(FTA, "DOUBLE")
+
+  field(FTA,  "DOUBLE")
+  field(NOA,  1)
+  field(INPA, "$(Sys)$(Dev)Val:Inp1-SP NPP")
+
+  field(FTB,  "DOUBLE")
+  field(NOB,  1)
+  field(INPB, "$(Sys)$(Dev)Val:Inp2-SP NPP")
+
+  field(FTC,  "DOUBLE")
+  field(NOC,  1)
+  field(INPC, "$(Sys)$(Dev)Val:InpOff1-SP NPP")
+
+  field(FTD,  "DOUBLE")
+  field(NOD,  1)
+  field(INPD, "$(Sys)$(Dev)Val:InpOff2-SP NPP")
+
+  field(FTE,  "DOUBLE")
+  field(NOE,  "$(N)")
+  field(INPE, "$(Sys)$(Dev)Val:Table0a-Wfrm NPP")
+  field(FTF,  "DOUBLE")
+  field(NOF,  "$(N)")
+  field(INPF, "$(Sys)$(Dev)Val:Table1a-Wfrm NPP")
+  field(FTG,  "DOUBLE")
+  field(NOG,  "$(N)")
+  field(INPG, "$(Sys)$(Dev)Val:Table2a-Wfrm NPP")
+  field(FTH,  "DOUBLE")
+  field(NOH,  "$(N)")
+  field(INPH, "$(Sys)$(Dev)Val:Table3a-Wfrm NPP")
+  field(FTI,  "DOUBLE")
+  field(NOI,  "$(N)")
+  field(INPI, "$(Sys)$(Dev)Val:Table4a-Wfrm NPP")
+  field(FTJ,  "DOUBLE")
+  field(NOJ,  "$(N)")
+  field(INPJ, "$(Sys)$(Dev)Val:Table5a-Wfrm NPP")
+  field(FTK,  "DOUBLE")
+  field(NOK,  "$(N)")
+  field(INPK, "$(Sys)$(Dev)Val:Table6a-Wfrm NPP")
+  field(FTL,  "DOUBLE")
+  field(NOL,  "$(N)")
+  field(INPL, "$(Sys)$(Dev)Val:Table7a-Wfrm NPP")
+  field(FTM,  "DOUBLE")
+  field(NOM,  "$(N)")
+  field(INPM, "$(Sys)$(Dev)Val:Table8a-Wfrm NPP")
+  field(FTN,  "DOUBLE")
+  field(NON,  "$(N)")
+  field(INPN, "$(Sys)$(Dev)Val:Table9a-Wfrm NPP")
+  field(FTO,  "DOUBLE")
+  field(NOO,  "$(N)")
+  field(INPO, "$(Sys)$(Dev)Val:Table10a-Wfrm NPP")
+
+  field(FTS,  "DOUBLE")
+  field(NOS,  "1")
+  field(INPS, "$(SSys)$(SDev)EScanFirst-RB CP")
+
+  field(FTT,  "DOUBLE")
+  field(NOT,  "1")
+  field(INPT, "$(SSys)$(SDev)EScanLast-RB CP")
+
+  field(FTU,  "CHAR")
+  field(NOU,  "1")
+  field(INPU, "$(Sys)$(SDev)Val:Table-Sel NPP")
+
+  field(FTVA,  "DOUBLE")
+  field(NOVA,  "100")
+  field(OUTA, "$(SSys)$(SDev)EScanGapVals-SP PP")
+
+  field(FLNK, ""$(SSys)$(SDev)EScanGapVals-SP")
+}
+
+

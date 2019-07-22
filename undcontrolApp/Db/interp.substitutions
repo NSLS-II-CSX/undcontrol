@@ -19,13 +19,13 @@ file db/selector.template
 
 file db/tables.template
 {
-  pattern { Sys , Dev , N , SDev, 
+  pattern { Sys , Dev , N , SSys, SDev, 
             InLnk1 , InLnk2, 
 			IEGU1 , IEGU2,
             OutLnk1 , OutLnk2, 
 			OutLnkRB1, OutLnkRB2, 
 			OEGU1 , OEGU2 , TPRO , ASG }
-  { "XF:23ID-ID" , "{EPU:1-FLT}", "100000000" , "{EPU:1}",
+  { "XF:23ID-ID" , "{EPU:1-FLT}", "100000000" , "SR:C23-ID:G1A", "{EPU:1}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
 	"XF:23ID-ID{EPU:1}Poln-SP CP MS", 
 	"eV", "", 
@@ -34,7 +34,7 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr-SP CP MS",
     "um" , "um", "0" , "EPU1PERMIT" }
-  { "XF:23ID-ID" , "{EPU:1-RLT}", "100000000" , "{EPU:1}",
+  { "XF:23ID-ID" , "{EPU:1-RLT}", "100000000" , "SR:C23-ID:G1A", "{EPU:1}",
     "SR:C23-ID:G1A{EPU:1-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:1-Ax:Phase}-Mtr.RBV CP MS", 
 	"um" , "um", 
@@ -43,7 +43,7 @@ file db/tables.template
 	"XF:23ID-ID{EPU:1}Enrgy-I CP MS" ,
 	"XF:23ID-ID{EPU:1}Poln-I CP MS" ,
     "eV" , "", "0" , "EPU1PERMIT" }
-  { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "{EPU:2}",
+  { "XF:23ID-ID" , "{EPU:2-FLT}", "100000000" , "SR:C23-ID:G1A", "{EPU:2}",
     "XF:23ID1-OP{Mono}Enrgy-SP CP MS" , 
 	"XF:23ID-ID{EPU:2}Poln-SP CP MS", 
 	"eV", "", 
@@ -52,7 +52,7 @@ file db/tables.template
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr-SP CP MS",
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr-SP CP MS",
     "um" , "um", "0" , "EPU2PERMIT" }
-  { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "{EPU:2}",
+  { "XF:23ID-ID" , "{EPU:2-RLT}", "100000000" , "SR:C23-ID:G1A", "{EPU:2}",
     "SR:C23-ID:G1A{EPU:2-Ax:Gap}-Mtr.RBV CP MS", 
     "SR:C23-ID:G1A{EPU:2-Ax:Phase}-Mtr.RBV CP MS", 
 	"um" , "um", 
