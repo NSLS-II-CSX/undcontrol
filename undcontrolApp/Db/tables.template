@@ -580,7 +580,7 @@ record(waveform, "$(Sys)$(Dev)Val:Table10b-Wfrm"){
 }
 
 
-record(aSub,"$(Sys)$(Dev)MyASub") {
+record(aSub,"$(Sys)$(Dev)FlyScanGaps") {
   field(SNAM,"get_id_scan_gaps")
   field(FTA, "DOUBLE")
 
@@ -650,7 +650,7 @@ record(aSub,"$(Sys)$(Dev)MyASub") {
   field(NOVA,  "100")
   field(OUTA, "$(SSys)$(SDev)EScanGapVals-SP PP")
 
-  field(FLNK, ""$(SSys)$(SDev)EScanGapVals-SP")
+  field(FLNK, "$(SSys)$(SDev)EScanGapVals-SP")
 }
 
 
