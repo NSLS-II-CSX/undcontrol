@@ -272,3 +272,4 @@ static long get_id_scan_gaps(aSubRecord *prec) {
 }
 
 epicsRegisterFunction(get_id_scan_gaps);
+
