@@ -19,6 +19,7 @@ DB += idaxis.template
 DB += id.substitutions
 DB += bpms.db
 DB += ctrl.db
+DB += ping.db
 
 
 #----------------------------------------------------

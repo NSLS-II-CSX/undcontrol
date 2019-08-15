@@ -18,6 +18,7 @@ undcontrol_registerRecordDeviceDriver(pdbbase)
 dbLoadTemplate("${TOP}/db/interp.substitutions")
 #dbLoadTemplate("${TOP}/db/id.substitutions")
 dbLoadRecords("${TOP}/db/bpms.db")
+dbLoadRecords("${TOP}/db/ping.db")
 #dbLoadRecords("${TOP}/db/ctrl.db")
 
 dbLoadRecords("$(EPICS_BASE)/db/iocAdminSoft.db", "IOC=XF:02IDA-CT{IOC:UNDCONTROL}")
