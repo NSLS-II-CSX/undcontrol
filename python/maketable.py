@@ -5,12 +5,17 @@
 # Upper and lower bounds currently set by input.  Can add another parameter and enable extrapolation for the interpolation function
 #
 # 09/13/17
-
+#
+#update on 08/14/19
+#using lmfit to create forward and reverse tables. improved ease of use.  some libaries are no longer needed.  New implmentatons is 
+#using the function set_EPUioc_table().  See doc-string via set_EPUioc_table??
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 import csv
+from lmfit.models import PolynomialModel 
+from matplotlib.ticker import FormatStrFormatter 
 
 def test_table(Emeas,Gmeas,Earraysize, Garraysize,minE, maxE, minG, maxG):
     '''
@@ -59,27 +64,25 @@ def test_table(Emeas,Gmeas,Earraysize, Garraysize,minE, maxE, minG, maxG):
 def make_table(output,IOCtable):
     x=output[0]
     y=output[1]
-    x2=output[1]#output[2]  ##2 and 3 are from previous version that needed to reverse interpolation
-    y2=output[0]#output[3]
+    x2=y#output[2]  ##2 and 3 are from previous version that needed to reverse interpolation
+    y2=x#output[3]
     
     #print('hello')
     
     #pv_stringi = ('XF:02ID-ID{EPU:1-RLT}Val:Table%sa-Wfrm'%(IOCtable))
     #print(pv_string)        
-    
-    #del pv  ### SAFEGUARD IF TESTING and pv is in namespace
+     
     fp = np.concatenate((np.array([x[0], x[1] - x[0], y.size, -1, 1, 3]), y, y, y))
     ######pv = epics.PV('XF:02ID-ID{EPU:1-FLT}Val:Table1a-Wfrm')  ## example to test
-    pv = epics.PV('XF:02ID-IDi{EPU:1-FLT}Val:Table%sa-Wfrm'%(IOCtable))
-    print(f'Writing to PV:\t{pv}\n{fp}')
+    pv = epics.PV('XF:02ID-ID{EPU:1-FLT}Val:Table%sa-Wfrm'%(IOCtable))
+    print(f'\nWriting to PV:\t{pv}\n{fp}\n\n')
     pv.put(fp)
-    
+        
     fp = np.concatenate((np.array([x2[0], x2[1] - x2[0], y2.size, -1, 1, 3]), y2, y2, y2))
     ######pv = epics.PV('XF:02ID-ID{EPU:1-RLT}Val:Table1a-Wfrm')  ## example to test
     pv = epics.PV('XF:02ID-ID{EPU:1-RLT}Val:Table%sa-Wfrm'%(IOCtable))
-    print(f'Writing to PV:\t{pv}\n{fp}')
+    print(f'\nWriting to PV:\t{pv}\n{fp}\n\n')
     pv.put(fp)
-
     
 
 def load_input(file):
@@ -143,7 +146,7 @@ def set_EPU_table(file,pts = [1000,1000], params = None, IOCtable=1, final=False
         else:
             print('the name space is', __name__)
 
-def fit_input_make_output(xe, yg, Epts = 1000, Emin = None, Emax = None, polydeg = 7, file=None):
+def fit_input_make_output(xe, yg, Epts = 1000, Emin = None, Emax = None, polydeg = 7, file=None, one2three=False):
     mod = PolynomialModel(polydeg)
     data = np.array([xe,yg])
     pars = mod.guess(yg, x=xe)
@@ -159,10 +162,15 @@ def fit_input_make_output(xe, yg, Epts = 1000, Emin = None, Emax = None, polydeg
     xnew = np.linspace(Emin, Emax, Epts)
     ynew = out.eval(x=xnew)
     output = np.array([xnew, ynew])
+
+    if one2three is True:
+        harmonic = 'EPU gap from 3xEnergy'
+    else:
+        harmonic = 'EPU gap with measured Energy'
     
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.set_title(f'EPU table: {file} nth degree poly = {mod.poly_degree}' )
+    ax.set_title(f'{file}\n {harmonic} --- fit: deg {mod.poly_degree} polynomial')
     ax.set_xlabel('Energy [eV]')
     ax.set_ylabel('Gap [mm]')
     ax.plot(xnew, ynew, 'r-', label = 'fit data for table')
@@ -170,44 +178,54 @@ def fit_input_make_output(xe, yg, Epts = 1000, Emin = None, Emax = None, polydeg
     ax.plot(xe,out.residual,'g:',label = 'residual')
     ax.grid(True)
     ax.legend()
-    print(f'Report from Fit:\[n {out.fit_report(show_correl = False)}')
+    print(f'Report from Fit:\[n {out.fit_report(show_correl = False)}\n')
+    print(f'Created table data with {Epts} points and {(xnew[1]-xnew[0])*1000 :.2f} meV resolution.')
 
     return output
 
-def set_EPUioc_table(file, ioc_table_num, write_to_ioc=False, Epts=1000, Emin = None, Emax = None, polydeg = 7 ):
-    
+def set_EPUioc_table(file,  Epts=1000, ioc_table_num=None, write_to_ioc=False, Emin = None, Emax = None, third_fm_first = False, polydeg = 7 ):
+    '''Function fits epu gap vs beamline energy to create a lookup table for automatically setting the epu gap for a given energy and polarization.
+    You can find the branch for this function at https://github.com/NSLS-II-CSX/undcontrol/tree/six
+    variable\t      :   \tdetails
+    file\t          :   \t.csv file.  format used from Valentina.  See example format and crate file with same (entry number, energy, gap)
+    Epts\t          :   \tnumber of points.  (Emax-Emin)/Epts = energy resolution of the table
+    ioc_table_no\t  :   \tcreates PV assocaite with specific table in the beamline undcontrol IOC. See the undcontrolApp associated with the gitrepo.
+    write_to_ioc\t  :   \tdefault False to test function and visualize results before writing to ioc. set to True to write to ioc PV.
+    Emin\t          :   \tMinimum energy of output to ioc.  Default is the minimum energy found in the .csv input file
+    Emax\t          :   \tMaximum energy of output to ioc.  Default is the maximum energy found in the .csv input filei
+    third_fm_first\t:   \tSet to true to create the EPU 3rd harmonic lookup table given that the input is for the 1st harmonic    
+    polydeg\t       :   \tparameter for the polynomial fit (degree).  7 is default and maximum number of degrees.
+    '''
     xe, yg = load_input(file)
+    if third_fm_first is True:
+        xe = np.array(xe)*3
     
     if Emin == None:
         Emin = np.min(xe)
     if Emax == None:
         Emax = np.max(xe)
 
-    output = fit_input_make_output(xe, yg, Epts, Emin, Emax, polydeg, file)
-
-    print('minimum Energy and Gap:\t', [np.min(x) for x in output])
-    print('maximum Energy and Gap:\t', [np.max(x) for x in output])
+    output = fit_input_make_output(xe, yg, Epts, Emin, Emax, polydeg, file, third_fm_first)
+    resol = output[0][1]-output[0][0]
+    print('\tminimum Energy and Gap:\t', [np.min(x) for x in output])
+    print('\tmaximum Energy and Gap:\t', [np.max(x) for x in output])
     
     dE_x, dG_x = [np.round(np.convolve(x, np.ones(2), 'valid') / 2,3) for x in output]  
     dE_y, dG_y = [np.diff(x) for x in output]
     
     fig = plt.figure(figsize=(9,5))
-    fig.suptitle('Lookup Table Resolution')
+    fig.suptitle(f'Lookup Table Resolution for IOC table {ioc_table_num}\nEmin={Emin:.1f} Emax={Emax:.1f} Epts={Epts} Eres={resol:.4f}')
     ax = fig.add_subplot(121)
-    #ax.plot(dE_x,dG_y,'.',label = 'foward')
-    ax.plot(dG_x,dE_y,'.',label = 'energy')
+    ax.plot(dE_x,dE_y*1000,'.',label = 'energy')
     ax.set_xlabel('Input Energy [eV]')
-    #ax.set_ylabel('Output Gap [mm]')
-    ax.set_ylabel('$\Delta$E [eV]')
-    ax.legend()
-    
+    ax.set_ylabel('$\Delta$E [meV]')
+    #ax.set_ylim(np.min(dE_y), np.max(dE_y))
+    ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+ 
     ax = fig.add_subplot(122)
-    #ax.plot(dG_x, dE_y, label = 'reverse')
     ax.plot(dG_x, dG_y, label = 'gap')
     ax.set_xlabel('Input Gap [mm]')
-    #ax.set_ylabel('Output Energy [eV]')
     ax.set_ylabel('$\Delta$G [mm]')
-    ax.legend()
 
     if write_to_ioc is False:
         print(f'\n\n\t\tJust testing. No data written to IOC for IOC table # {ioc_table_num}')
