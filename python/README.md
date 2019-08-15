@@ -1,4 +1,4 @@
-Follow these instructions to use:
+## Follow these instructions to use a python script to update the undcontrol lookup/interpolation tables:
 
 * start a nsls2 conda environment (`conda activate name_of_env`) that is either analysis or collection
 * type `ipython`
@@ -8,7 +8,7 @@ Follow these instructions to use:
 * if you encounter an issue with "memory" you may need to set the maximum sized array allow for EPICS. I am not sure if `! export....` commnad will work in ipython session. you may need to exit the session to run `export EPICS_CA_MAX_ARRAY_BYTES=100000000`.  You can increase the number of zeros if need be.
 * The local copy on ws3 for SIX operator is also on the undcontrol ioc1 in the python sub-directory.  The ioc is where git manages version control of these python defintions.  `scp` the local changes to the ioc and push to git on the ioc for future tracking. https://www.computerhope.com/unix/scp.htm
 
-Example Usage:
+## Example Usage:
 
 testing w/ conversion of first harmonic data to third harmonic data without writing lookup values to the IOC table
 
