@@ -5,8 +5,8 @@ Follow these instructions to use:
 * `%run -i maketable.py`
 * at this point, `epics` has not been imported into the ipython session as a fail safe. When ready, you will need to `import epics`
 * use the main function `set_EPUioc_table()`.  The docstring has more information on how to use it (`set_EPUioc_table??`)
-* if you encounter an issue with "memory" you may need to set the maximum sized array allow for EPICS. I am not sure if `! export....` commnad will work in ipython session. you may need to exit the session to run `export EPICS_CA_MAX_ARRAY_BYTES=100000000`.  You can incrase the number of zeros if need be, but this should not be an issue.
-* The local copy on ws3 for SIX operator is also on the undcontrol ioc1 in python directory.  The ioc is where git is currently managed.  `scp` the local changes to the ioc and push to git on the ioc for future tracking. https://www.computerhope.com/unix/scp.htm
+* if you encounter an issue with "memory" you may need to set the maximum sized array allow for EPICS. I am not sure if `! export....` commnad will work in ipython session. you may need to exit the session to run `export EPICS_CA_MAX_ARRAY_BYTES=100000000`.  You can increase the number of zeros if need be.
+* The local copy on ws3 for SIX operator is also on the undcontrol ioc1 in the python sub-directory.  The ioc is where git manages version control of these python defintions.  `scp` the local changes to the ioc and push to git on the ioc for future tracking. https://www.computerhope.com/unix/scp.htm
 
 Example Usage:
 
